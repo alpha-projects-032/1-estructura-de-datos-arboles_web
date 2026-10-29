@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="es" id="exe-page-mvsxbrc8-47t1jcuyv">
+<head>
+<meta charset="utf-8">
+<meta name="generator" content="eXeLearning v4.0.5">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="license" type="text/html" href="https://creativecommons.org/licenses/by-sa/4.0/">
+<title>4. Recorridos de árboles | 1. Estructura de Datos Arboles</title>
+<link rel="icon" type="image/x-icon" href="../libs/favicon.ico">
+<script>document.querySelector("html").classList.add("js");</script><script src="../libs/jquery/jquery.min.js"> </script><script src="../libs/common_i18n.js"> </script><script src="../libs/common.js"> </script><script src="../libs/exe_export.js"> </script><script src="../libs/bootstrap/bootstrap.bundle.min.js"> </script><link rel="stylesheet" href="../libs/bootstrap/bootstrap.min.css">
+<script src="../idevices/text/text.js"></script><link rel="stylesheet" href="../idevices/text/text.css">
+<link rel="stylesheet" href="../content/css/base.css"><script src="../theme/style.js"> </script><link rel="stylesheet" href="../theme/style.css">
+</head>
+<body class="exe-export exe-web-site">
+<script>document.body.className+=" js"</script>
+<div class="exe-content exe-export pre-js siteNav-hidden"><a href="#page-mvsxbrc8-47t1jcuyv" id="skipNav">Skip to content</a> <nav id="siteNav">
+<ul>
+<li> <a href="../index.html" class="main-node no-ch">Inicio</a>
+</li>
+<li> <a href="../html/1-fundamentos-de-los-arboles-en-estructuras-de-dat.html" class="no-ch">1. Fundamentos de los árboles en estructuras de datos</a>
+</li>
+<li> <a href="../html/2-tipos-y-clasificacion-de-arboles.html" class="no-ch">2. Tipos y clasificación de árboles</a>
+</li>
+<li> <a href="../html/3-operaciones-fundamentales-en-arboles.html" class="no-ch">3. Operaciones fundamentales en árboles</a>
+</li>
+<li class="active"> <a href="../html/4-recorridos-de-arboles.html" class="active no-ch">4. Recorridos de árboles</a>
+</li>
+<li> <a href="../html/5-implementacion-y-aplicaciones-de-arboles-en-pyth.html" class="no-ch">5. Implementación y aplicaciones de árboles en Python</a>
+</li>
+<li> <a href="../html/repaso-estructura-de-datos-arboles.html" class="no-ch">Repaso: Estructura de Datos Arboles</a>
+</li>
+</ul>
+</nav><main id="page-mvsxbrc8-47t1jcuyv" class="page"> 
+<header class="main-header">
+<div class="package-header"><p class="package-title">1. Estructura de Datos Arboles</p></div>
+<div class="page-header"><h1 class="page-title">4. Recorridos de árboles</h1></div>
+</header><div id="page-content-page-mvsxbrc8-47t1jcuyv" class="page-content">
+<article id="block-mvsyhy1p-fwsoyml8k" class="box">
+<header class="box-head no-icon">
+<h1 class="box-title">Contenido</h1>
+<button class="box-toggle box-toggle-on" title="Toggle content">
+<span>Toggle content</span>
+</button></header>
+<div class="box-content">
+<div id="idevice-1793242859674-et0rrqtyv" class="idevice_node text" data-idevice-path="../idevices/text/" data-idevice-type="text" data-idevice-component-type="json" data-idevice-json-data="{&quot;ideviceId&quot;:&quot;idevice-1793242859674-et0rrqtyv&quot;}">
+<div class="exe-text-template">
+    <div style="font-family: Arial, Helvetica, sans-serif; color: #1f2937; line-height: 1.65; max-width: 1200px; margin: 0 auto;"><!-- ENCABEZADO PRINCIPAL -->
+<div style="background: #3B82F6; color: #ffffff; padding: 26px 30px; border-radius: 10px; margin-bottom: 24px;">
+<div style="display: inline-block; background: #FBBF24; color: #1f2937; padding: 5px 12px; border-radius: 20px; font-size: 14px; font-weight: bold; margin-bottom: 12px;">Estructuras de datos no lineales</div>
+<h2 style="margin: 0 0 10px; color: #ffffff; font-size: 29px; font-weight: 600;">Subtema 4. Recorridos de árboles</h2>
+<p style="margin: 0; color: #ffffff; font-size: 17px;">Comprender y aplicar los recorridos preorden, inorden, postorden y por niveles, utilizando algoritmos de búsqueda en profundidad y anchura mediante Python.</p>
+</div>
+<!-- INTRODUCCIÓN -->
+<div style="background: #F9F9FB; border: 1px solid #E5E7EB; border-left: 6px solid #10B981; padding: 20px 24px; border-radius: 8px; margin-bottom: 30px;">
+<h3 style="color: #1f2937; margin: 0 0 12px; font-size: 22px;">Introducción</h3>
+<p>Los árboles permiten organizar información de manera jerárquica mediante nodos conectados entre sí. Sin embargo, para consultar, procesar o mostrar todos los elementos almacenados es necesario establecer un procedimiento que permita visitar sistemáticamente sus nodos.</p>
+<p>Este procedimiento se conoce como <strong>recorrido de árboles</strong>.</p>
+<p>A diferencia de las estructuras lineales, los árboles admiten diferentes órdenes de recorrido dependiendo de la posición de los nodos y del algoritmo utilizado.</p>
+<p style="margin-bottom: 0;">Los recorridos más utilizados en árboles binarios son <strong>preorden, inorden, postorden y recorrido por niveles</strong>. Cada uno establece un orden diferente para procesar la información.</p>
+</div>
+<!-- 4.1 CONCEPTO -->
+<section style="margin-bottom: 34px;">
+<h3 style="color: #1f2937; font-size: 24px; border-bottom: 3px solid #3B82F6; padding-bottom: 9px; margin-bottom: 20px;">4.1 Concepto e importancia del recorrido de árboles</h3>
+<div style="background: #EFF6FF; border: 1px solid #BFDBFE; border-left: 6px solid #3B82F6; padding: 22px 26px; border-radius: 9px; margin-bottom: 22px;">
+<p style="margin: 0; font-size: 18px;">Un <strong>recorrido de árbol</strong> es un algoritmo que permite visitar sistemáticamente todos los nodos de una estructura siguiendo un orden determinado.</p>
+</div>
+<p>En un recorrido completo, cada nodo se visita exactamente una vez. El orden de visita depende del algoritmo seleccionado.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Importancia de los recorridos</h4>
+<div style="display: flex; flex-wrap: wrap; gap: 14px; margin: 20px 0;">
+<div style="flex: 1 1 240px; background: #EFF6FF; border: 1px solid #BFDBFE; padding: 18px; border-radius: 8px;"><strong style="color: #1d4ed8;">Procesamiento de información</strong>
+<p style="margin: 8px 0 0;">Permiten consultar los valores almacenados en todos los nodos.</p>
+</div>
+<div style="flex: 1 1 240px; background: #ECFDF5; border: 1px solid #A7F3D0; padding: 18px; border-radius: 8px;"><strong style="color: #047857;">Búsqueda y exploración</strong>
+<p style="margin: 8px 0 0;">Facilitan examinar estructuras jerárquicas.</p>
+</div>
+<div style="flex: 1 1 240px; background: #FFFBEB; border: 1px solid #FDE68A; padding: 18px; border-radius: 8px;"><strong style="color: #92400e;">Organización de datos</strong>
+<p style="margin: 8px 0 0;">Permiten obtener elementos siguiendo un orden específico.</p>
+</div>
+<div style="flex: 1 1 240px; background: #F9F9FB; border: 1px solid #E5E7EB; padding: 18px; border-radius: 8px;"><strong>Aplicación de algoritmos</strong>
+<p style="margin: 8px 0 0;">Se utilizan para procesar subárboles y evaluar expresiones.</p>
+</div>
+</div>
+<h4 style="color: #1f2937;">Árbol de referencia</h4>
+<p>Para comprender los recorridos utilizaremos el siguiente árbol binario de búsqueda.</p>
+<div style="background: #FFFFFF; border: 1px solid #E5E7EB; padding: 20px; border-radius: 9px; text-align: center;"><svg viewbox="0 0 440 265" style="width: 100%; max-width: 460px; height: auto;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Árbol binario de búsqueda con raíz 50, hijos 30 y 70 y hojas 20, 40, 60 y 80"> <g stroke="#94A3B8" stroke-width="3"> <line x1="220" y1="40" x2="120" y2="125"></line> <line x1="220" y1="40" x2="320" y2="125"></line> <line x1="120" y1="125" x2="55" y2="220"></line> <line x1="120" y1="125" x2="175" y2="220"></line> <line x1="320" y1="125" x2="265" y2="220"></line> <line x1="320" y1="125" x2="385" y2="220"></line> </g> <circle cx="220" cy="40" r="28" fill="#3B82F6"></circle> <circle cx="120" cy="125" r="26" fill="#10B981"></circle> <circle cx="320" cy="125" r="26" fill="#10B981"></circle> <g fill="#64748B"> <circle cx="55" cy="220" r="24"></circle> <circle cx="175" cy="220" r="24"></circle> <circle cx="265" cy="220" r="24"></circle> <circle cx="385" cy="220" r="24"></circle> </g> <g fill="#FFFFFF" font-family="Arial" font-size="17" font-weight="bold" text-anchor="middle"> <text x="220" y="46">50</text> <text x="120" y="131">30</text> <text x="320" y="131">70</text> <text x="55" y="226">20</text> <text x="175" y="226">40</text> <text x="265" y="226">60</text> <text x="385" y="226">80</text> </g> </svg>
+<p style="font-size: 14px; color: #64748b; margin: 10px 0 0;">Árbol de referencia con siete nodos y tres niveles.</p>
+</div>
+<h4 style="color: #1f2937; margin-top: 24px;">Clasificación de los recorridos</h4>
+<div style="overflow-x: auto;">
+<table style="width: 100%; border-collapse: collapse; min-width: 620px;">
+<thead>
+<tr style="background: #3B82F6; color: #ffffff;">
+<th style="padding: 13px; border: 1px solid #2563EB; text-align: left;">Categoría</th>
+<th style="padding: 13px; border: 1px solid #2563EB; text-align: left;">Característica</th>
+<th style="padding: 13px; border: 1px solid #2563EB; text-align: left;">Recorridos</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background: #FFFFFF;">
+<td style="padding: 13px; border: 1px solid #D1D5DB;"><strong>DFS</strong></td>
+<td style="padding: 13px; border: 1px solid #D1D5DB;">Explora ramas y subárboles antes de continuar con otros.</td>
+<td style="padding: 13px; border: 1px solid #D1D5DB;">Preorden, inorden y postorden.</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 13px; border: 1px solid #D1D5DB;"><strong>BFS</strong></td>
+<td style="padding: 13px; border: 1px solid #D1D5DB;">Visita los nodos de acuerdo con su nivel.</td>
+<td style="padding: 13px; border: 1px solid #D1D5DB;">Recorrido por niveles.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- 4.2 PREORDEN -->
+<section style="margin-bottom: 34px;">
+<h3 style="color: #1f2937; font-size: 24px; border-bottom: 3px solid #3B82F6; padding-bottom: 9px; margin-bottom: 20px;">4.2 Recorrido en preorden</h3>
+<div style="background: #EFF6FF; border: 1px solid #BFDBFE; border-left: 6px solid #3B82F6; padding: 22px 26px; border-radius: 9px; margin-bottom: 22px;">
+<p style="margin: 0; font-size: 18px;">El <strong>recorrido en preorden</strong> visita primero el nodo raíz, después el subárbol izquierdo y finalmente el subárbol derecho.</p>
+</div>
+<div style="background: #EFF6FF; border: 1px solid #BFDBFE; border-radius: 9px; padding: 20px; text-align: center;"><strong style="color: #1d4ed8;">Secuencia del recorrido</strong>
+<div style="font-size: 21px; font-weight: bold; color: #1d4ed8; margin-top: 12px;">Raíz → Izquierda → Derecha</div>
+</div>
+<h4 style="color: #1f2937; margin-top: 24px;">Procedimiento</h4>
+<ol style="padding-left: 24px;">
+<li style="margin-bottom: 8px;">Visitar la raíz del árbol.</li>
+<li style="margin-bottom: 8px;">Recorrer el subárbol izquierdo utilizando preorden.</li>
+<li style="margin-bottom: 8px;">Recorrer el subárbol derecho utilizando preorden.</li>
+<li>Repetir el proceso hasta visitar todos los nodos.</li>
+</ol>
+<h4 style="color: #1d4ed8;">Ejemplo paso a paso</h4>
+<p>Utilizando el árbol de referencia, se visita primero 50, posteriormente el subárbol izquierdo formado por 30, 20 y 40, y finalmente el subárbol derecho formado por 70, 60 y 80.</p>
+<div style="background: #FFFFFF; border: 1px solid #E5E7EB; border-radius: 9px; padding: 22px; margin: 20px 0;"><strong style="color: #1d4ed8;">Orden de visita</strong>
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px; margin-top: 16px;"><span style="background: #3B82F6; color: #ffffff; padding: 10px 14px; border-radius: 7px; font-weight: bold;">50</span> <span style="color: #3b82f6;">→</span> <span style="background: #DBEAFE; padding: 10px 14px; border-radius: 7px;">30</span> <span>→</span> <span style="background: #DBEAFE; padding: 10px 14px; border-radius: 7px;">20</span> <span>→</span> <span style="background: #DBEAFE; padding: 10px 14px; border-radius: 7px;">40</span> <span>→</span> <span style="background: #DBEAFE; padding: 10px 14px; border-radius: 7px;">70</span> <span>→</span> <span style="background: #DBEAFE; padding: 10px 14px; border-radius: 7px;">60</span> <span>→</span> <span style="background: #DBEAFE; padding: 10px 14px; border-radius: 7px;">80</span></div>
+</div>
+<h4 style="color: #10b981;">Implementación en Python</h4>
+<pre style="background: #1F2937; color: #f9fafb; font-family: Consolas, Monaco, monospace; font-size: 14px; line-height: 1.7; padding: 22px; border-radius: 9px; overflow-x: auto;"><code>def preorden(nodo):
+    if nodo is not None:
+        print(nodo.valor, end=&quot; &quot;)
+        preorden(nodo.izquierdo)
+        preorden(nodo.derecho)</code></pre>
+<div style="background: #ECFDF5; border: 1px solid #A7F3D0; padding: 18px 22px; border-radius: 8px;"><strong style="color: #047857;">Salida del recorrido</strong>
+<pre style="margin: 10px 0 0; color: #1f2937; font-family: Consolas, Monaco, monospace; white-space: pre-wrap;">50 30 20 40 70 60 80</pre>
+</div>
+<p>La función utiliza recursividad. Primero muestra el nodo actual, después procesa el subárbol izquierdo y finalmente el subárbol derecho.</p>
+<div style="background: #FFFBEB; border-left: 5px solid #FBBF24; padding: 18px 22px; border-radius: 8px; margin-top: 20px;"><strong style="color: #92400e;">Aplicaciones del preorden</strong>
+<p style="margin: 8px 0 0;">Procesamiento de padres antes de sus descendientes, generación de representaciones jerárquicas y obtención de notación prefija en árboles de expresión.</p>
+</div>
+</section>
+<!-- 4.3 INORDEN -->
+<section style="margin-bottom: 34px;">
+<h3 style="color: #1f2937; font-size: 24px; border-bottom: 3px solid #3B82F6; padding-bottom: 9px; margin-bottom: 20px;">4.3 Recorrido en inorden</h3>
+<div style="background: #ECFDF5; border: 1px solid #A7F3D0; border-left: 6px solid #10B981; padding: 22px 26px; border-radius: 9px; margin-bottom: 22px;">
+<p style="margin: 0; font-size: 18px;">El <strong>recorrido en inorden</strong> visita primero el subárbol izquierdo, después la raíz y finalmente el subárbol derecho.</p>
+</div>
+<div style="background: #ECFDF5; border: 1px solid #A7F3D0; border-radius: 9px; padding: 20px; text-align: center;"><strong style="color: #047857;">Secuencia del recorrido</strong>
+<div style="font-size: 21px; font-weight: bold; color: #047857; margin-top: 12px;">Izquierda → Raíz → Derecha</div>
+</div>
+<h4 style="color: #1f2937; margin-top: 24px;">Procedimiento</h4>
+<ol style="padding-left: 24px;">
+<li style="margin-bottom: 8px;">Recorrer el subárbol izquierdo.</li>
+<li style="margin-bottom: 8px;">Visitar el nodo raíz.</li>
+<li style="margin-bottom: 8px;">Recorrer el subárbol derecho.</li>
+<li>Repetir el proceso para cada subárbol.</li>
+</ol>
+<h4 style="color: #047857;">Ejemplo paso a paso</h4>
+<p>Se comienza por el nodo más a la izquierda, 20. Después se visita 30, luego 40 y posteriormente la raíz 50. Finalmente se procesa el subárbol derecho.</p>
+<div style="background: #FFFFFF; border: 1px solid #E5E7EB; border-radius: 9px; padding: 22px; margin: 20px 0;"><strong style="color: #047857;">Orden de visita</strong>
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px; margin-top: 16px;"><span style="background: #D1FAE5; padding: 10px 14px; border-radius: 7px;">20</span> <span>→</span> <span style="background: #D1FAE5; padding: 10px 14px; border-radius: 7px;">30</span> <span>→</span> <span style="background: #D1FAE5; padding: 10px 14px; border-radius: 7px;">40</span> <span>→</span> <span style="background: #10B981; color: white; padding: 10px 14px; border-radius: 7px; font-weight: bold;">50</span> <span>→</span> <span style="background: #D1FAE5; padding: 10px 14px; border-radius: 7px;">60</span> <span>→</span> <span style="background: #D1FAE5; padding: 10px 14px; border-radius: 7px;">70</span> <span>→</span> <span style="background: #D1FAE5; padding: 10px 14px; border-radius: 7px;">80</span></div>
+</div>
+<h4 style="color: #10b981;">Implementación en Python</h4>
+<pre style="background: #1F2937; color: #f9fafb; font-family: Consolas, Monaco, monospace; font-size: 14px; line-height: 1.7; padding: 22px; border-radius: 9px; overflow-x: auto;"><code>def inorden(nodo):
+    if nodo is not None:
+        inorden(nodo.izquierdo)
+        print(nodo.valor, end=&quot; &quot;)
+        inorden(nodo.derecho)</code></pre>
+<div style="background: #ECFDF5; border: 1px solid #A7F3D0; padding: 18px 22px; border-radius: 8px;"><strong style="color: #047857;">Salida del recorrido</strong>
+<pre style="margin: 10px 0 0; color: #1f2937; font-family: Consolas, Monaco, monospace; white-space: pre-wrap;">20 30 40 50 60 70 80</pre>
+</div>
+<div style="background: #ECFDF5; border-left: 5px solid #10B981; padding: 18px 22px; border-radius: 8px; margin-top: 20px;"><strong style="color: #047857;">Propiedad importante del BST</strong>
+<p style="margin: 8px 0 0;">Cuando se aplica inorden a un BST con valores menores a la izquierda y mayores a la derecha, los elementos se obtienen en orden ascendente, sin necesidad de aplicar posteriormente otro algoritmo de ordenamiento.</p>
+</div>
+<p style="margin-top: 20px;">Este recorrido también puede utilizarse en el procesamiento de expresiones infijas y para verificar determinadas propiedades de ordenamiento.</p>
+</section>
+<!-- 4.4 POSTORDEN -->
+<section style="margin-bottom: 34px;">
+<h3 style="color: #1f2937; font-size: 24px; border-bottom: 3px solid #3B82F6; padding-bottom: 9px; margin-bottom: 20px;">4.4 Recorrido en postorden</h3>
+<div style="background: #FFFBEB; border: 1px solid #FDE68A; border-left: 6px solid #FBBF24; padding: 22px 26px; border-radius: 9px; margin-bottom: 22px;">
+<p style="margin: 0; font-size: 18px;">El <strong>recorrido en postorden</strong> visita primero el subárbol izquierdo, después el derecho y finalmente la raíz.</p>
+</div>
+<div style="background: #FFFBEB; border: 1px solid #FDE68A; border-radius: 9px; padding: 20px; text-align: center;"><strong style="color: #92400e;">Secuencia del recorrido</strong>
+<div style="font-size: 21px; font-weight: bold; color: #92400e; margin-top: 12px;">Izquierda → Derecha → Raíz</div>
+</div>
+<h4 style="color: #1f2937; margin-top: 24px;">Procedimiento</h4>
+<ol style="padding-left: 24px;">
+<li style="margin-bottom: 8px;">Recorrer el subárbol izquierdo.</li>
+<li style="margin-bottom: 8px;">Recorrer el subárbol derecho.</li>
+<li style="margin-bottom: 8px;">Visitar la raíz.</li>
+<li>Repetir el procedimiento para cada subárbol.</li>
+</ol>
+<h4 style="color: #92400e;">Ejemplo paso a paso</h4>
+<p>Primero se visitan 20 y 40, después su padre 30. Luego se visitan 60 y 80, seguidos por su padre 70. Finalmente se visita la raíz 50.</p>
+<div style="background: #FFFFFF; border: 1px solid #E5E7EB; border-radius: 9px; padding: 22px; margin: 20px 0;"><strong style="color: #92400e;">Orden de visita</strong>
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px; margin-top: 16px;"><span style="background: #FEF3C7; padding: 10px 14px; border-radius: 7px;">20</span> <span>→</span> <span style="background: #FEF3C7; padding: 10px 14px; border-radius: 7px;">40</span> <span>→</span> <span style="background: #FEF3C7; padding: 10px 14px; border-radius: 7px;">30</span> <span>→</span> <span style="background: #FEF3C7; padding: 10px 14px; border-radius: 7px;">60</span> <span>→</span> <span style="background: #FEF3C7; padding: 10px 14px; border-radius: 7px;">80</span> <span>→</span> <span style="background: #FEF3C7; padding: 10px 14px; border-radius: 7px;">70</span> <span>→</span> <span style="background: #D97706; color: white; padding: 10px 14px; border-radius: 7px; font-weight: bold;">50</span></div>
+</div>
+<h4 style="color: #10b981;">Implementación en Python</h4>
+<pre style="background: #1F2937; color: #f9fafb; font-family: Consolas, Monaco, monospace; font-size: 14px; line-height: 1.7; padding: 22px; border-radius: 9px; overflow-x: auto;"><code>def postorden(nodo):
+    if nodo is not None:
+        postorden(nodo.izquierdo)
+        postorden(nodo.derecho)
+        print(nodo.valor, end=&quot; &quot;)</code></pre>
+<div style="background: #ECFDF5; border: 1px solid #A7F3D0; padding: 18px 22px; border-radius: 8px;"><strong style="color: #047857;">Salida del recorrido</strong>
+<pre style="margin: 10px 0 0; color: #1f2937; font-family: Consolas, Monaco, monospace; white-space: pre-wrap;">20 40 30 60 80 70 50</pre>
+</div>
+<p>En este recorrido, los hijos se procesan antes que sus padres. Por ello es útil para realizar operaciones donde deben procesarse primero los elementos subordinados.</p>
+<div style="background: #FFFBEB; border-left: 5px solid #FBBF24; padding: 18px 22px; border-radius: 8px; margin-top: 20px;"><strong style="color: #92400e;">Aplicaciones del postorden</strong>
+<p style="margin: 8px 0 0;">Eliminación completa de estructuras jerárquicas, cálculo de tamaños de subárboles y procesamiento de expresiones en notación postfija.</p>
+</div>
+</section>
+<!-- 4.5 RECORRIDO POR NIVELES -->
+<section style="margin-bottom: 34px;">
+<h3 style="color: #1f2937; font-size: 24px; border-bottom: 3px solid #3B82F6; padding-bottom: 9px; margin-bottom: 20px;">4.5 Recorrido por niveles (BFS)</h3>
+<div style="background: #EFF6FF; border: 1px solid #BFDBFE; border-left: 6px solid #3B82F6; padding: 22px 26px; border-radius: 9px; margin-bottom: 22px;">
+<p style="margin: 0; font-size: 18px;">El <strong>recorrido por niveles</strong>, también conocido como búsqueda en anchura o BFS (<em>Breadth-First Search</em>), visita los nodos nivel por nivel, comenzando desde la raíz.</p>
+</div>
+<p>En cada nivel, los nodos se procesan de izquierda a derecha. Una implementación habitual utiliza una <strong>cola</strong>, estructura que sigue el principio FIFO: el primer elemento en entrar es el primero en salir.</p>
+<h4 style="color: #1d4ed8;">Procedimiento</h4>
+<ol style="padding-left: 24px;">
+<li style="margin-bottom: 8px;">Insertar la raíz en una cola.</li>
+<li style="margin-bottom: 8px;">Extraer el primer nodo de la cola.</li>
+<li style="margin-bottom: 8px;">Visitar el nodo extraído.</li>
+<li style="margin-bottom: 8px;">Insertar sus hijos en la cola, primero el izquierdo y después el derecho.</li>
+<li>Repetir hasta que la cola quede vacía.</li>
+</ol>
+<h4 style="color: #1f2937;">Representación por niveles</h4>
+<div style="background: #FFFFFF; border: 1px solid #E5E7EB; padding: 20px; border-radius: 9px; text-align: center;"><svg viewbox="0 0 460 290" style="width: 100%; max-width: 480px; height: auto;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Recorrido BFS del nivel cero al nivel dos"> <rect x="60" y="10" width="390" height="75" rx="8" fill="#EFF6FF"></rect> <rect x="60" y="102" width="390" height="75" rx="8" fill="#ECFDF5"></rect> <rect x="60" y="194" width="390" height="86" rx="8" fill="#FFFBEB"></rect> <g stroke="#94A3B8" stroke-width="3"> <line x1="255" y1="47" x2="155" y2="139"></line> <line x1="255" y1="47" x2="355" y2="139"></line> <line x1="155" y1="139" x2="90" y2="237"></line> <line x1="155" y1="139" x2="195" y2="237"></line> <line x1="355" y1="139" x2="295" y2="237"></line> <line x1="355" y1="139" x2="400" y2="237"></line> </g> <g fill="#3B82F6"><circle cx="255" cy="47" r="26"></circle></g> <g fill="#10B981"><circle cx="155" cy="139" r="25"></circle><circle cx="355" cy="139" r="25"></circle></g> <g fill="#D97706"> <circle cx="90" cy="237" r="23"></circle> <circle cx="195" cy="237" r="23"></circle> <circle cx="295" cy="237" r="23"></circle> <circle cx="400" cy="237" r="23"></circle> </g> <g fill="white" font-family="Arial" font-size="17" font-weight="bold" text-anchor="middle"> <text x="255" y="53">50</text> <text x="155" y="145">30</text> <text x="355" y="145">70</text> <text x="90" y="243">20</text> <text x="195" y="243">40</text> <text x="295" y="243">60</text> <text x="400" y="243">80</text> </g> <g fill="#475569" font-family="Arial" font-size="15" font-weight="bold"> <text x="8" y="52">N0</text> <text x="8" y="144">N1</text> <text x="8" y="242">N2</text> </g> </svg>
+<p style="font-size: 14px; color: #64748b; margin: 10px 0 0;">BFS procesa primero el nivel 0, después el nivel 1 y finalmente el nivel 2.</p>
+</div>
+<h4 style="color: #1d4ed8; margin-top: 24px;">Secuencia de visita</h4>
+<div style="background: #F9F9FB; border: 1px solid #E5E7EB; padding: 22px; border-radius: 9px;">
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px;"><span style="background: #3B82F6; color: white; padding: 10px 14px; border-radius: 7px; font-weight: bold;">50</span> <span>→</span> <span style="background: #D1FAE5; padding: 10px 14px; border-radius: 7px;">30</span> <span>→</span> <span style="background: #D1FAE5; padding: 10px 14px; border-radius: 7px;">70</span> <span>→</span> <span style="background: #FEF3C7; padding: 10px 14px; border-radius: 7px;">20</span> <span>→</span> <span style="background: #FEF3C7; padding: 10px 14px; border-radius: 7px;">40</span> <span>→</span> <span style="background: #FEF3C7; padding: 10px 14px; border-radius: 7px;">60</span> <span>→</span> <span style="background: #FEF3C7; padding: 10px 14px; border-radius: 7px;">80</span></div>
+</div>
+<h4 style="color: #10b981; margin-top: 24px;">Implementación utilizando deque</h4>
+<p>Python proporciona <code>deque</code> dentro del módulo <code>collections</code>, que permite implementar colas eficientemente.</p>
+<pre style="background: #1F2937; color: #f9fafb; font-family: Consolas, Monaco, monospace; font-size: 14px; line-height: 1.7; padding: 22px; border-radius: 9px; overflow-x: auto;"><code>from collections import deque
+
+def por_niveles(raiz):
+    if raiz is None:
+        return
+
+    cola = deque([raiz])
+
+    while cola:
+        nodo = cola.popleft()
+        print(nodo.valor, end=&quot; &quot;)
+
+        if nodo.izquierdo is not None:
+            cola.append(nodo.izquierdo)
+
+        if nodo.derecho is not None:
+            cola.append(nodo.derecho)</code></pre>
+<div style="background: #ECFDF5; border: 1px solid #A7F3D0; padding: 18px 22px; border-radius: 8px;"><strong style="color: #047857;">Salida del recorrido</strong>
+<pre style="margin: 10px 0 0; color: #1f2937; font-family: Consolas, Monaco, monospace; white-space: pre-wrap;">50 30 70 20 40 60 80</pre>
+</div>
+<h4 style="color: #1f2937; margin-top: 24px;">Explicación del código</h4>
+<div style="display: flex; flex-wrap: wrap; gap: 14px;">
+<div style="flex: 1 1 230px; background: #EFF6FF; border: 1px solid #BFDBFE; padding: 18px; border-radius: 8px;"><strong style="color: #1d4ed8;">deque([raiz])</strong>
+<p style="margin: 8px 0 0;">Crea una cola que inicialmente contiene la raíz.</p>
+</div>
+<div style="flex: 1 1 230px; background: #ECFDF5; border: 1px solid #A7F3D0; padding: 18px; border-radius: 8px;"><strong style="color: #047857;">popleft()</strong>
+<p style="margin: 8px 0 0;">Extrae y devuelve el primer nodo de la cola.</p>
+</div>
+<div style="flex: 1 1 230px; background: #FFFBEB; border: 1px solid #FDE68A; padding: 18px; border-radius: 8px;"><strong style="color: #92400e;">append()</strong>
+<p style="margin: 8px 0 0;">Incorpora los nodos hijos al final de la cola.</p>
+</div>
+</div>
+<p style="margin-top: 20px;">Esta estrategia permite recorrer jerarquías por niveles, localizar nodos cercanos a la raíz y analizar la distribución de una estructura.</p>
+</section>
+<!-- 4.6 COMPARACIÓN -->
+<section style="margin-bottom: 34px;">
+<h3 style="color: #1f2937; font-size: 24px; border-bottom: 3px solid #3B82F6; padding-bottom: 9px; margin-bottom: 20px;">4.6 Comparación de recorridos y ejemplos prácticos</h3>
+<p>Aunque los cuatro recorridos visitan los mismos nodos, el orden en que se procesa la información cambia según el algoritmo utilizado.</p>
+<h4 style="color: #1d4ed8;">Comparación de resultados</h4>
+<div style="overflow-x: auto; margin: 20px 0;">
+<table style="width: 100%; border-collapse: collapse; min-width: 720px;">
+<thead>
+<tr style="background: #3B82F6; color: #ffffff;">
+<th style="padding: 13px; border: 1px solid #2563EB; text-align: left;">Recorrido</th>
+<th style="padding: 13px; border: 1px solid #2563EB; text-align: left;">Orden</th>
+<th style="padding: 13px; border: 1px solid #2563EB; text-align: left;">Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background: #EFF6FF;">
+<td style="padding: 13px; border: 1px solid #D1D5DB;"><strong>Preorden</strong></td>
+<td style="padding: 13px; border: 1px solid #D1D5DB;">Raíz, izquierda, derecha</td>
+<td style="padding: 13px; border: 1px solid #D1D5DB;">50, 30, 20, 40, 70, 60, 80</td>
+</tr>
+<tr style="background: #ECFDF5;">
+<td style="padding: 13px; border: 1px solid #D1D5DB;"><strong>Inorden</strong></td>
+<td style="padding: 13px; border: 1px solid #D1D5DB;">Izquierda, raíz, derecha</td>
+<td style="padding: 13px; border: 1px solid #D1D5DB;">20, 30, 40, 50, 60, 70, 80</td>
+</tr>
+<tr style="background: #FFFBEB;">
+<td style="padding: 13px; border: 1px solid #D1D5DB;"><strong>Postorden</strong></td>
+<td style="padding: 13px; border: 1px solid #D1D5DB;">Izquierda, derecha, raíz</td>
+<td style="padding: 13px; border: 1px solid #D1D5DB;">20, 40, 30, 60, 80, 70, 50</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 13px; border: 1px solid #D1D5DB;"><strong>Por niveles</strong></td>
+<td style="padding: 13px; border: 1px solid #D1D5DB;">Nivel por nivel</td>
+<td style="padding: 13px; border: 1px solid #D1D5DB;">50, 30, 70, 20, 40, 60, 80</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 style="color: #1f2937;">Complejidad temporal</h4>
+<p>Si el árbol contiene <strong>n nodos</strong>, un recorrido completo visita cada nodo exactamente una vez. Por lo tanto, los cuatro recorridos tienen complejidad temporal:</p>
+<div style="background: #EFF6FF; border: 1px solid #BFDBFE; padding: 20px; border-radius: 9px; text-align: center; margin: 20px 0;">
+<div style="font-size: 29px; color: #1d4ed8; font-weight: bold;">O(n)</div>
+<p style="margin: 6px 0 0;">Tiempo proporcional a la cantidad de nodos.</p>
+</div>
+<h4 style="color: #1f2937;">Espacio auxiliar</h4>
+<p>Los recorridos pueden requerir estructuras auxiliares diferentes para administrar el procesamiento de los nodos.</p>
+<div style="overflow-x: auto;">
+<table style="width: 100%; border-collapse: collapse; min-width: 620px;">
+<thead>
+<tr style="background: #3B82F6; color: #ffffff;">
+<th style="padding: 13px; border: 1px solid #2563EB; text-align: left;">Recorrido</th>
+<th style="padding: 13px; border: 1px solid #2563EB; text-align: left;">Estructura auxiliar</th>
+<th style="padding: 13px; border: 1px solid #2563EB; text-align: left;">Espacio</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background: white;">
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Preorden</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Pila de llamadas recursivas</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">O(h)</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Inorden</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Pila de llamadas recursivas</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">O(h)</td>
+</tr>
+<tr style="background: white;">
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Postorden</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Pila de llamadas recursivas</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">O(h)</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Por niveles</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Cola</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">O(w)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>En la tabla, <strong>h</strong> representa la altura medida en nodos, utilizada para estimar la profundidad máxima de recursión, y <strong>w</strong> representa la anchura máxima del árbol.</p>
+<div style="background: #FFFBEB; border-left: 5px solid #FBBF24; padding: 18px 22px; border-radius: 8px; margin-top: 20px;">
+<p style="margin: 0;">En árboles balanceados, los recorridos recursivos suelen requerir O(log n) espacio auxiliar. En árboles degenerados pueden requerir O(n).</p>
+</div>
+<h4 style="color: #1f2937; margin-top: 26px;">Selección del recorrido según la necesidad</h4>
+<div style="display: flex; flex-wrap: wrap; gap: 14px;">
+<div style="flex: 1 1 230px; background: #EFF6FF; border: 1px solid #BFDBFE; padding: 18px; border-radius: 8px;"><strong style="color: #1d4ed8;">Preorden</strong>
+<p style="margin: 8px 0 0;">Cuando se necesita procesar primero el nodo padre y después sus descendientes.</p>
+</div>
+<div style="flex: 1 1 230px; background: #ECFDF5; border: 1px solid #A7F3D0; padding: 18px; border-radius: 8px;"><strong style="color: #047857;">Inorden</strong>
+<p style="margin: 8px 0 0;">Cuando se requiere obtener valores ordenados de un BST.</p>
+</div>
+<div style="flex: 1 1 230px; background: #FFFBEB; border: 1px solid #FDE68A; padding: 18px; border-radius: 8px;"><strong style="color: #92400e;">Postorden</strong>
+<p style="margin: 8px 0 0;">Cuando los hijos deben procesarse antes que sus padres.</p>
+</div>
+<div style="flex: 1 1 230px; background: #F9F9FB; border: 1px solid #E5E7EB; padding: 18px; border-radius: 8px;"><strong>Por niveles</strong>
+<p style="margin: 8px 0 0;">Cuando interesa examinar la estructura por niveles de profundidad.</p>
+</div>
+</div>
+</section>
+<!-- EJEMPLO INTEGRADOR -->
+<section style="margin-bottom: 34px;">
+<h3 style="color: #1f2937; font-size: 24px; border-bottom: 3px solid #3B82F6; padding-bottom: 9px; margin-bottom: 20px;">Ejemplo integrador en Python</h3>
+<p>El siguiente programa crea un árbol binario de búsqueda y ejecuta los cuatro recorridos estudiados. El código es completo y puede ejecutarse de manera independiente.</p>
+<pre style="background: #1F2937; color: #f9fafb; font-family: Consolas, Monaco, monospace; font-size: 14px; line-height: 1.7; padding: 22px; border-radius: 9px; overflow-x: auto;"><code>from collections import deque
+
+
+class Nodo:
+    def __init__(self, valor):
+        self.valor = valor
+        self.izquierdo = None
+        self.derecho = None
+
+
+def insertar(raiz, valor):
+    if raiz is None:
+        return Nodo(valor)
+
+    if valor &lt; raiz.valor:
+        raiz.izquierdo = insertar(raiz.izquierdo, valor)
+
+    elif valor &gt; raiz.valor:
+        raiz.derecho = insertar(raiz.derecho, valor)
+
+    return raiz
+
+
+def preorden(nodo):
+    if nodo is not None:
+        print(nodo.valor, end=&quot; &quot;)
+        preorden(nodo.izquierdo)
+        preorden(nodo.derecho)
+
+
+def inorden(nodo):
+    if nodo is not None:
+        inorden(nodo.izquierdo)
+        print(nodo.valor, end=&quot; &quot;)
+        inorden(nodo.derecho)
+
+
+def postorden(nodo):
+    if nodo is not None:
+        postorden(nodo.izquierdo)
+        postorden(nodo.derecho)
+        print(nodo.valor, end=&quot; &quot;)
+
+
+def por_niveles(raiz):
+    if raiz is None:
+        return
+
+    cola = deque([raiz])
+
+    while cola:
+        nodo = cola.popleft()
+        print(nodo.valor, end=&quot; &quot;)
+
+        if nodo.izquierdo is not None:
+            cola.append(nodo.izquierdo)
+
+        if nodo.derecho is not None:
+            cola.append(nodo.derecho)
+
+
+# Crear el árbol
+raiz = None
+
+valores = [50, 30, 70, 20, 40, 60, 80]
+
+for valor in valores:
+    raiz = insertar(raiz, valor)
+
+
+# Ejecutar recorridos
+print(&quot;Preorden:&quot;)
+preorden(raiz)
+
+print(&quot;\nInorden:&quot;)
+inorden(raiz)
+
+print(&quot;\nPostorden:&quot;)
+postorden(raiz)
+
+print(&quot;\nPor niveles:&quot;)
+por_niveles(raiz)</code></pre>
+<h4 style="color: #10b981; margin-top: 24px;">Resultado de la ejecución</h4>
+<pre style="background: #1F2937; color: #a7f3d0; font-family: Consolas, Monaco, monospace; font-size: 15px; line-height: 1.7; padding: 22px; border-radius: 9px; overflow-x: auto;"><code>Preorden:
+50 30 20 40 70 60 80
+
+Inorden:
+20 30 40 50 60 70 80
+
+Postorden:
+20 40 30 60 80 70 50
+
+Por niveles:
+50 30 70 20 40 60 80</code></pre>
+<h4 style="color: #1f2937;">Análisis del resultado</h4>
+<div style="background: #FFFBEB; border: 1px solid #FDE68A; padding: 20px 24px; border-radius: 9px;">
+<ul style="margin: 0; padding-left: 24px;">
+<li style="margin-bottom: 8px;">Los cuatro recorridos visitan los siete nodos del árbol.</li>
+<li style="margin-bottom: 8px;">Preorden procesa cada raíz antes de sus descendientes.</li>
+<li style="margin-bottom: 8px;">Inorden genera los valores en orden ascendente porque se utiliza un BST.</li>
+<li style="margin-bottom: 8px;">Postorden procesa los hijos antes que sus padres.</li>
+<li>El recorrido por niveles procesa primero los nodos superiores y luego los inferiores.</li>
+</ul>
+</div>
+</section>
+<!-- SÍNTESIS -->
+<div style="background: #1F2937; color: #ffffff; padding: 26px 30px; border-radius: 10px; margin-top: 30px;">
+<h3 style="margin: 0 0 12px; color: #fbbf24; font-size: 22px;">Síntesis</h3>
+<p>Los recorridos de árboles permiten visitar sistemáticamente los nodos de una estructura jerárquica siguiendo diferentes criterios.</p>
+<p>Preorden, inorden y postorden corresponden a estrategias de búsqueda en profundidad (DFS), mientras que el recorrido por niveles utiliza búsqueda en anchura (BFS).</p>
+<p>En preorden se procesa primero la raíz; en inorden se procesa entre ambos subárboles; y en postorden se procesa al final. BFS visita los nodos desde los niveles superiores hasta los inferiores.</p>
+<p style="margin-bottom: 0;">La selección del recorrido depende de las características del problema y del orden en que se necesita procesar la información.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+</div></main><div class="nav-buttons">
+<a href="../html/3-operaciones-fundamentales-en-arboles.html" title="Anterior" class="nav-button nav-button-left"><span>Anterior</span></a>
+<a href="../html/5-implementacion-y-aplicaciones-de-arboles-en-pyth.html" title="Siguiente" class="nav-button nav-button-right"><span>Siguiente</span></a>
+</div>
+<footer id="siteFooter"><div id="siteFooterContent"> <div id="packageLicense" class="cc cc-by-sa"> <p> <span class="license-label">Licencia: </span><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="license">Creative Commons: Reconocimiento - compartir igual 4.0</a></p>
+</div>
+</div></footer>
+</div>
+<p id="made-with-eXe"> <a href="https://exelearning.net/" target="_blank" rel="noopener"> <span>Creado con eXeLearning <span>(Ventana nueva)</span></span></a></p>
+</body>
+</html>

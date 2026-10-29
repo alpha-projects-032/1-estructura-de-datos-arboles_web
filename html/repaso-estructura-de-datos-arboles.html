@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="es" id="exe-page-mvsxc5p7-3zyxdc3x5">
+<head>
+<meta charset="utf-8">
+<meta name="generator" content="eXeLearning v4.0.5">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="license" type="text/html" href="https://creativecommons.org/licenses/by-sa/4.0/">
+<title>Repaso: Estructura de Datos Arboles | 1. Estructura de Datos Arboles</title>
+<link rel="icon" type="image/x-icon" href="../libs/favicon.ico">
+<script>document.querySelector("html").classList.add("js");</script><script src="../libs/jquery/jquery.min.js"> </script><script src="../libs/common_i18n.js"> </script><script src="../libs/common.js"> </script><script src="../libs/exe_export.js"> </script><script src="../libs/bootstrap/bootstrap.bundle.min.js"> </script><link rel="stylesheet" href="../libs/bootstrap/bootstrap.min.css">
+<script src="../idevices/text/text.js"></script><link rel="stylesheet" href="../idevices/text/text.css">
+<link rel="stylesheet" href="../content/css/base.css"><script src="../theme/style.js"> </script><link rel="stylesheet" href="../theme/style.css">
+</head>
+<body class="exe-export exe-web-site">
+<script>document.body.className+=" js"</script>
+<div class="exe-content exe-export pre-js siteNav-hidden"><a href="#page-mvsxc5p7-3zyxdc3x5" id="skipNav">Skip to content</a> <nav id="siteNav">
+<ul>
+<li> <a href="../index.html" class="main-node no-ch">Inicio</a>
+</li>
+<li> <a href="../html/1-fundamentos-de-los-arboles-en-estructuras-de-dat.html" class="no-ch">1. Fundamentos de los árboles en estructuras de datos</a>
+</li>
+<li> <a href="../html/2-tipos-y-clasificacion-de-arboles.html" class="no-ch">2. Tipos y clasificación de árboles</a>
+</li>
+<li> <a href="../html/3-operaciones-fundamentales-en-arboles.html" class="no-ch">3. Operaciones fundamentales en árboles</a>
+</li>
+<li> <a href="../html/4-recorridos-de-arboles.html" class="no-ch">4. Recorridos de árboles</a>
+</li>
+<li> <a href="../html/5-implementacion-y-aplicaciones-de-arboles-en-pyth.html" class="no-ch">5. Implementación y aplicaciones de árboles en Python</a>
+</li>
+<li class="active"> <a href="../html/repaso-estructura-de-datos-arboles.html" class="active no-ch">Repaso: Estructura de Datos Arboles</a>
+</li>
+</ul>
+</nav><main id="page-mvsxc5p7-3zyxdc3x5" class="page"> 
+<header class="main-header">
+<div class="package-header"><p class="package-title">1. Estructura de Datos Arboles</p></div>
+<div class="page-header"><h1 class="page-title">Repaso: Estructura de Datos Arboles</h1></div>
+</header><div id="page-content-page-mvsxc5p7-3zyxdc3x5" class="page-content">
+<article id="block-mvsytpn1-e4qu0w8tj" class="box">
+<header class="box-head no-icon">
+<h1 class="box-title">Repaso</h1>
+<button class="box-toggle box-toggle-on" title="Toggle content">
+<span>Toggle content</span>
+</button></header>
+<div class="box-content">
+<div id="idevice-1793243408651-geq5bnj9m" class="idevice_node text" data-idevice-path="../idevices/text/" data-idevice-type="text" data-idevice-component-type="json" data-idevice-json-data="{&quot;ideviceId&quot;:&quot;idevice-1793243408651-geq5bnj9m&quot;}">
+<div class="exe-text-template">
+    <style>
+    #juego-arboles-esda * {
+      box-sizing: border-box;
+    }
+
+    #juego-arboles-esda .ja-item {
+      background: #FFFFFF;
+      border: 1px solid #E5E7EB;
+      border-left: 5px solid #3B82F6;
+      border-radius: 9px;
+      padding: 16px;
+      margin-bottom: 13px;
+    }
+
+    #juego-arboles-esda .ja-item.correcto {
+      border-left-color: #10B981;
+      background: #ECFDF5;
+    }
+
+    #juego-arboles-esda .ja-item.incorrecto {
+      border-left-color: #EF4444;
+      background: #FFF1F2;
+    }
+
+    #juego-arboles-esda .ja-concepto {
+      display: block;
+      color: #1F2937;
+      font-weight: 700;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    #juego-arboles-esda .ja-select {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      padding: 12px;
+      background: #FFFFFF;
+      color: #1F2937;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      border: 1px solid #CBD5E1;
+      border-radius: 7px;
+      cursor: pointer;
+      white-space: normal;
+    }
+
+    #juego-arboles-esda .ja-select:focus {
+      outline: 2px solid #3B82F6;
+      outline-offset: 2px;
+    }
+
+    #juego-arboles-esda .ja-retro {
+      margin-top: 9px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    #juego-arboles-esda .ja-boton {
+      padding: 13px 22px;
+      border: none;
+      border-radius: 8px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    #juego-arboles-esda .ja-boton:focus {
+      outline: 3px solid #FBBF24;
+      outline-offset: 3px;
+    }
+
+    #juego-arboles-esda .ja-principal {
+      background: #3B82F6;
+      color: #FFFFFF;
+    }
+
+    #juego-arboles-esda .ja-secundario {
+      background: #1F2937;
+      color: #FFFFFF;
+    }
+
+    #juego-arboles-esda .ja-resultado {
+      display: none;
+      margin-top: 22px;
+      padding: 22px;
+      text-align: center;
+      background: #EFF6FF;
+      border: 1px solid #BFDBFE;
+      border-radius: 10px;
+    }
+
+    #juego-arboles-esda .ja-puntos {
+      font-size: 40px;
+      font-weight: 700;
+      color: #1D4ED8;
+      line-height: 1.3;
+    }
+
+    @media (max-width: 600px) {
+      #juego-arboles-esda .ja-item {
+        padding: 13px;
+      }
+
+      #juego-arboles-esda .ja-boton {
+        width: 100%;
+      }
+    }
+  </style>
+<div id="juego-arboles-esda" style="font-family: Arial, Helvetica, sans-serif; color: #1f2937; line-height: 1.6; max-width: 1100px; margin: 0 auto;"><!-- ENCABEZADO -->
+<div style="background: #3B82F6; color: #ffffff; padding: 26px 30px; border-radius: 10px; margin-bottom: 22px;">
+<div style="display: inline-block; background: #FBBF24; color: #1f2937; padding: 5px 12px; border-radius: 20px; font-size: 14px; font-weight: bold; margin-bottom: 12px;">Actividad interactiva</div>
+<h2 style="margin: 0 0 10px; color: #ffffff; font-size: 27px;">Juego de relacionar: Árboles</h2>
+<p style="margin: 0; color: #ffffff; font-size: 16px;">Relaciona los conceptos con sus definiciones correspondientes.</p>
+</div>
+<!-- INSTRUCCIONES -->
+<div style="background: #F9F9FB; border: 1px solid #E5E7EB; border-left: 6px solid #10B981; padding: 20px 24px; border-radius: 9px; margin-bottom: 22px;">
+<h3 style="color: #1f2937; margin: 0 0 12px; font-size: 21px;">Instrucciones</h3>
+<ol style="padding-left: 22px; margin: 0;">
+<li>Lee cuidadosamente cada concepto.</li>
+<li>Selecciona la definición correcta en la lista desplegable.</li>
+<li>Completa las diez relaciones.</li>
+<li>Presiona <strong>Calificar respuestas</strong> para conocer tu puntuación.</li>
+<li>Puedes repetir la actividad todas las veces que desees.</li>
+</ol>
+</div>
+<!-- INDICADORES -->
+<div style="display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px;">
+<div style="flex: 1 1 150px; background: #EFF6FF; border: 1px solid #BFDBFE; padding: 15px; border-radius: 9px; text-align: center;">
+<div style="font-size: 24px; font-weight: bold; color: #1d4ed8;">10</div>
+<div style="font-size: 13px;">Relaciones</div>
+</div>
+<div style="flex: 1 1 150px; background: #ECFDF5; border: 1px solid #A7F3D0; padding: 15px; border-radius: 9px; text-align: center;">
+<div style="font-size: 24px; font-weight: bold; color: #047857;">10</div>
+<div style="font-size: 13px;">Puntuación máxima</div>
+</div>
+<div style="flex: 1 1 150px; background: #FFFBEB; border: 1px solid #FDE68A; padding: 15px; border-radius: 9px; text-align: center;">
+<div style="font-size: 24px; font-weight: bold; color: #92400e;">∞</div>
+<div style="font-size: 13px;">Intentos ilimitados</div>
+</div>
+<div style="flex: 1 1 150px; background: #F9F9FB; border: 1px solid #E5E7EB; padding: 15px; border-radius: 9px; text-align: center;">
+<div id="ja-intentos" style="font-size: 24px; font-weight: bold; color: #1f2937;">0</div>
+<div style="font-size: 13px;">Intentos realizados</div>
+</div>
+</div>
+<!-- PROGRESO -->
+<div style="background: #FFFFFF; border: 1px solid #E5E7EB; padding: 17px 20px; border-radius: 9px; margin-bottom: 20px;">
+<div style="display: flex; justify-content: space-between; gap: 12px; margin-bottom: 9px; font-size: 14px;"><strong>Progreso de la actividad</strong> <span id="ja-progreso-texto">0 de 10 respondidas</span></div>
+<div style="height: 11px; background: #E5E7EB; border-radius: 20px; overflow: hidden;">
+<div id="ja-progreso-barra" style="height: 100%; width: 0%; background: #10B981; border-radius: 20px; transition: width .2s;"></div>
+</div>
+</div>
+<!-- PREGUNTAS -->
+<div id="ja-preguntas"></div>
+<!-- CONTROLES -->
+<div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 22px;"><button type="button" id="ja-calificar" class="ja-boton ja-principal"> Calificar respuestas </button> <button type="button" id="ja-reiniciar" class="ja-boton ja-secundario"> Intentar nuevamente </button></div>
+<!-- RESULTADOS -->
+<div id="ja-resultado" class="ja-resultado" role="status" aria-live="polite">
+<h3 style="color: #1f2937; margin: 0 0 12px; font-size: 22px;">Resultado de la actividad</h3>
+<div id="ja-puntos" class="ja-puntos">0 / 10</div>
+<p id="ja-aciertos" style="margin: 10px 0; font-weight: bold;"></p>
+<p id="ja-mensaje" style="margin: 10px 0 0;"></p>
+</div>
+<!-- REFERENCIAS DE RETROALIMENTACIÓN -->
+<div style="background: #FFFBEB; border-left: 5px solid #FBBF24; border-radius: 8px; padding: 17px 20px; margin-top: 24px;"><strong style="color: #92400e;">Criterio de evaluación</strong>
+<p style="margin: 8px 0 0;">Cada relación correcta equivale a <strong>1 punto</strong>. Las respuestas incorrectas o sin seleccionar equivalen a 0 puntos. La puntuación final se expresa en una escala de <strong>0 a 10</strong>.</p>
+</div>
+<script>
+  (function () {
+    "use strict";
+
+    var contenedor = document.getElementById("juego-arboles-esda");
+
+    if (!contenedor || contenedor.getAttribute("data-iniciado") === "si") {
+      return;
+    }
+
+    contenedor.setAttribute("data-iniciado", "si");
+
+    var datos = [
+      {
+        id: 1,
+        concepto: "Nodo raíz",
+        respuesta: "Elemento principal de un árbol que no tiene padre y desde el cual se originan las demás conexiones."
+      },
+      {
+        id: 2,
+        concepto: "Nodo hoja",
+        respuesta: "Nodo que no posee hijos y representa el final de una rama dentro del árbol."
+      },
+      {
+        id: 3,
+        concepto: "Árbol binario",
+        respuesta: "Estructura jerárquica donde cada nodo puede tener como máximo dos hijos: izquierdo y derecho."
+      },
+      {
+        id: 4,
+        concepto: "Árbol AVL",
+        respuesta: "Árbol binario de búsqueda autoequilibrado que mantiene una diferencia máxima de una unidad entre las alturas de los subárboles de cada nodo."
+      },
+      {
+        id: 5,
+        concepto: "Inserción en un BST",
+        respuesta: "Operación que incorpora un nuevo nodo respetando las reglas de ordenamiento de los valores."
+      },
+      {
+        id: 6,
+        concepto: "Eliminación de un nodo con dos hijos",
+        respuesta: "Operación que puede utilizar el sucesor inorden para sustituir el valor eliminado y conservar las propiedades del BST."
+      },
+      {
+        id: 7,
+        concepto: "Recorrido en preorden",
+        respuesta: "Visita primero la raíz, después el subárbol izquierdo y finalmente el derecho."
+      },
+      {
+        id: 8,
+        concepto: "Recorrido por niveles (BFS)",
+        respuesta: "Visita los nodos nivel por nivel utilizando habitualmente una cola FIFO."
+      },
+      {
+        id: 9,
+        concepto: "Clase Node en Python",
+        respuesta: "Clase que representa un nodo mediante un valor y referencias hacia sus hijos izquierdo y derecho."
+      },
+      {
+        id: 10,
+        concepto: "Clase BinarySearchTree",
+        respuesta: "Clase que administra un árbol binario de búsqueda y encapsula operaciones como inserción, búsqueda y recorridos."
+      }
+    ];
+
+    var intentos = 0;
+    var evaluado = false;
+
+    var preguntas = contenedor.querySelector("#ja-preguntas");
+    var botonCalificar = contenedor.querySelector("#ja-calificar");
+    var botonReiniciar = contenedor.querySelector("#ja-reiniciar");
+
+    function mezclar(lista) {
+      var copia = lista.slice();
+
+      for (var i = copia.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temporal = copia[i];
+
+        copia[i] = copia[j];
+        copia[j] = temporal;
+      }
+
+      return copia;
+    }
+
+    function actualizarProgreso() {
+      var selectores = preguntas.querySelectorAll("select");
+      var respondidas = 0;
+
+      for (var i = 0; i < selectores.length; i++) {
+        if (selectores[i].value !== "") {
+          respondidas++;
+        }
+      }
+
+      contenedor.querySelector("#ja-progreso-texto").textContent =
+        respondidas + " de 10 respondidas";
+
+      contenedor.querySelector("#ja-progreso-barra").style.width =
+        (respondidas * 10) + "%";
+    }
+
+    function crearJuego() {
+      preguntas.innerHTML = "";
+      evaluado = false;
+
+      var opciones = mezclar(datos);
+
+      for (var i = 0; i < datos.length; i++) {
+        var elemento = datos[i];
+
+        var tarjeta = document.createElement("div");
+        tarjeta.className = "ja-item";
+        tarjeta.setAttribute("data-correcta", elemento.id);
+
+        var titulo = document.createElement("label");
+        titulo.className = "ja-concepto";
+        titulo.setAttribute("for", "ja-select-" + elemento.id);
+        titulo.textContent = (i + 1) + ". " + elemento.concepto;
+
+        var selector = document.createElement("select");
+        selector.className = "ja-select";
+        selector.id = "ja-select-" + elemento.id;
+
+        var opcionInicial = document.createElement("option");
+        opcionInicial.value = "";
+        opcionInicial.textContent = "Selecciona la definición correcta";
+        selector.appendChild(opcionInicial);
+
+        for (var j = 0; j < opciones.length; j++) {
+          var opcion = document.createElement("option");
+          opcion.value = opciones[j].id;
+          opcion.textContent = opciones[j].respuesta;
+          selector.appendChild(opcion);
+        }
+
+        selector.addEventListener("change", function () {
+          if (!evaluado) {
+            actualizarProgreso();
+          }
+        });
+
+        var retro = document.createElement("div");
+        retro.className = "ja-retro";
+        retro.setAttribute("aria-live", "polite");
+
+        tarjeta.appendChild(titulo);
+        tarjeta.appendChild(selector);
+        tarjeta.appendChild(retro);
+
+        preguntas.appendChild(tarjeta);
+      }
+
+      contenedor.querySelector("#ja-resultado").style.display = "none";
+      botonCalificar.disabled = false;
+      botonCalificar.style.opacity = "1";
+
+      actualizarProgreso();
+    }
+
+    function calificar() {
+      if (evaluado) {
+        return;
+      }
+
+      var tarjetas = preguntas.querySelectorAll(".ja-item");
+      var aciertos = 0;
+
+      for (var i = 0; i < tarjetas.length; i++) {
+        var tarjeta = tarjetas[i];
+        var selector = tarjeta.querySelector("select");
+        var retro = tarjeta.querySelector(".ja-retro");
+
+        var correcta = tarjeta.getAttribute("data-correcta");
+        var seleccionada = selector.value;
+
+        if (seleccionada === correcta) {
+          aciertos++;
+
+          tarjeta.classList.add("correcto");
+          retro.textContent = "✓ Respuesta correcta";
+          retro.style.color = "#047857";
+        } else {
+          tarjeta.classList.add("incorrecto");
+          retro.textContent = seleccionada === ""
+            ? "✗ Sin responder"
+            : "✗ Respuesta incorrecta";
+          retro.style.color = "#BE123C";
+        }
+
+        selector.disabled = true;
+      }
+
+      intentos++;
+      evaluado = true;
+
+      contenedor.querySelector("#ja-intentos").textContent = intentos;
+      contenedor.querySelector("#ja-puntos").textContent = aciertos + " / 10";
+      contenedor.querySelector("#ja-aciertos").textContent =
+        aciertos + " respuestas correctas de 10";
+
+      var mensaje = "";
+      var resultado = contenedor.querySelector("#ja-resultado");
+
+      if (aciertos === 10) {
+        mensaje = "¡Excelente! Has relacionado correctamente todos los conceptos.";
+        resultado.style.background = "#ECFDF5";
+        resultado.style.borderColor = "#A7F3D0";
+      } else if (aciertos >= 8) {
+        mensaje = "Muy buen resultado. Revisa los conceptos que no relacionaste correctamente.";
+        resultado.style.background = "#EFF6FF";
+        resultado.style.borderColor = "#BFDBFE";
+      } else if (aciertos >= 6) {
+        mensaje = "Buen avance. Repasa las definiciones y realiza otro intento.";
+        resultado.style.background = "#FFFBEB";
+        resultado.style.borderColor = "#FDE68A";
+      } else {
+        mensaje = "Es recomendable repasar los cinco subtemas antes de intentar nuevamente.";
+        resultado.style.background = "#FFF1F2";
+        resultado.style.borderColor = "#FECDD3";
+      }
+
+      contenedor.querySelector("#ja-mensaje").textContent = mensaje;
+      resultado.style.display = "block";
+
+      botonCalificar.disabled = true;
+      botonCalificar.style.opacity = "0.55";
+
+      resultado.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest"
+      });
+    }
+
+    botonCalificar.addEventListener("click", calificar);
+
+    botonReiniciar.addEventListener("click", function () {
+      crearJuego();
+
+      preguntas.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    });
+
+    crearJuego();
+  })();
+  </script>
+</div>
+</div>
+</div>
+</div>
+</article>
+</div></main><div class="nav-buttons">
+<a href="../html/5-implementacion-y-aplicaciones-de-arboles-en-pyth.html" title="Anterior" class="nav-button nav-button-left"><span>Anterior</span></a>
+<span class="nav-button nav-button-right" aria-hidden="true"><span>Siguiente</span></span>
+</div>
+<footer id="siteFooter"><div id="siteFooterContent"> <div id="packageLicense" class="cc cc-by-sa"> <p> <span class="license-label">Licencia: </span><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="license">Creative Commons: Reconocimiento - compartir igual 4.0</a></p>
+</div>
+</div></footer>
+</div>
+<p id="made-with-eXe"> <a href="https://exelearning.net/" target="_blank" rel="noopener"> <span>Creado con eXeLearning <span>(Ventana nueva)</span></span></a></p>
+</body>
+</html>

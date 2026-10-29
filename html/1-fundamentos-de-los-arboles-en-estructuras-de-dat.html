@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="es" id="exe-page-mvsxb6ct-iyjq4qeki">
+<head>
+<meta charset="utf-8">
+<meta name="generator" content="eXeLearning v4.0.5">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="license" type="text/html" href="https://creativecommons.org/licenses/by-sa/4.0/">
+<title>1. Fundamentos de los árboles en estructuras de datos | 1. Estructura de Datos Arboles</title>
+<link rel="icon" type="image/x-icon" href="../libs/favicon.ico">
+<script>document.querySelector("html").classList.add("js");</script><script src="../libs/jquery/jquery.min.js"> </script><script src="../libs/common_i18n.js"> </script><script src="../libs/common.js"> </script><script src="../libs/exe_export.js"> </script><script src="../libs/bootstrap/bootstrap.bundle.min.js"> </script><link rel="stylesheet" href="../libs/bootstrap/bootstrap.min.css">
+<script src="../idevices/text/text.js"></script><link rel="stylesheet" href="../idevices/text/text.css">
+<link rel="stylesheet" href="../content/css/base.css"><script src="../theme/style.js"> </script><link rel="stylesheet" href="../theme/style.css">
+</head>
+<body class="exe-export exe-web-site">
+<script>document.body.className+=" js"</script>
+<div class="exe-content exe-export pre-js siteNav-hidden"><a href="#page-mvsxb6ct-iyjq4qeki" id="skipNav">Skip to content</a> <nav id="siteNav">
+<ul>
+<li> <a href="../index.html" class="main-node no-ch">Inicio</a>
+</li>
+<li class="active"> <a href="../html/1-fundamentos-de-los-arboles-en-estructuras-de-dat.html" class="active no-ch">1. Fundamentos de los árboles en estructuras de datos</a>
+</li>
+<li> <a href="../html/2-tipos-y-clasificacion-de-arboles.html" class="no-ch">2. Tipos y clasificación de árboles</a>
+</li>
+<li> <a href="../html/3-operaciones-fundamentales-en-arboles.html" class="no-ch">3. Operaciones fundamentales en árboles</a>
+</li>
+<li> <a href="../html/4-recorridos-de-arboles.html" class="no-ch">4. Recorridos de árboles</a>
+</li>
+<li> <a href="../html/5-implementacion-y-aplicaciones-de-arboles-en-pyth.html" class="no-ch">5. Implementación y aplicaciones de árboles en Python</a>
+</li>
+<li> <a href="../html/repaso-estructura-de-datos-arboles.html" class="no-ch">Repaso: Estructura de Datos Arboles</a>
+</li>
+</ul>
+</nav><main id="page-mvsxb6ct-iyjq4qeki" class="page"> 
+<header class="main-header">
+<div class="package-header"><p class="package-title">1. Estructura de Datos Arboles</p></div>
+<div class="page-header"><h1 class="page-title">1. Fundamentos de los árboles en estructuras de datos</h1></div>
+</header><div id="page-content-page-mvsxb6ct-iyjq4qeki" class="page-content">
+<article id="block-mvsxgid4-xjiwhuk4i" class="box">
+<header class="box-head no-icon">
+<h1 class="box-title">Contenido</h1>
+<button class="box-toggle box-toggle-on" title="Toggle content">
+<span>Toggle content</span>
+</button></header>
+<div class="box-content">
+<div id="idevice-1793241113079-gf8bmwr4x" class="idevice_node text" data-idevice-path="../idevices/text/" data-idevice-type="text" data-idevice-component-type="json" data-idevice-json-data="{&quot;ideviceId&quot;:&quot;idevice-1793241113079-gf8bmwr4x&quot;}">
+<div class="exe-text-template">
+    <div style="font-family: Arial, Helvetica, sans-serif; color: #1f2937; line-height: 1.65; max-width: 1200px; margin: 0 auto;"><!-- ENCABEZADO PRINCIPAL -->
+<div style="background: #3B82F6; color: #ffffff; padding: 26px 30px; border-radius: 10px; margin-bottom: 24px;">
+<div style="display: inline-block; background: #FBBF24; color: #1f2937; padding: 5px 12px; border-radius: 20px; font-size: 14px; font-weight: bold; margin-bottom: 12px;">Estructuras de datos no lineales</div>
+<h2 style="margin: 0 0 10px; color: #ffffff; font-size: 29px; font-weight: 600;">Subtema 1. Fundamentos de los árboles en estructuras de datos</h2>
+<p style="margin: 0; color: #ffffff; font-size: 17px;">Comprender la organización jerárquica de los árboles, sus elementos fundamentales, propiedades y diferencias respecto a las estructuras lineales.</p>
+</div>
+<!-- INTRODUCCIÓN -->
+<div style="background: #F9F9FB; border: 1px solid #E5E7EB; border-left: 6px solid #10B981; padding: 20px 24px; border-radius: 8px; margin-bottom: 30px;">
+<h3 style="color: #1f2937; margin: 0 0 12px; font-size: 22px;">Introducción</h3>
+<p>En el desarrollo de software, no toda la información puede organizarse mediante estructuras lineales como listas, pilas o colas. Existen situaciones en las que los datos mantienen relaciones jerárquicas, donde un elemento principal se conecta con otros elementos subordinados.</p>
+<p>Por ejemplo, los sistemas de archivos organizan carpetas y subcarpetas, las instituciones representan sus departamentos mediante jerarquías y las aplicaciones informáticas utilizan categorías y subcategorías.</p>
+<p style="margin-bottom: 0;">Para representar estas relaciones se utilizan los <strong>árboles</strong>, estructuras de datos no lineales que permiten organizar información mediante nodos conectados entre sí.</p>
+</div>
+<!-- 1.1 CONCEPTO -->
+<section style="margin-bottom: 34px;">
+<h3 style="color: #1f2937; font-size: 24px; border-bottom: 3px solid #3B82F6; padding-bottom: 9px; margin-bottom: 20px;">1.1 Concepto de árbol como estructura de datos no lineal</h3>
+<div style="background: #EFF6FF; border: 1px solid #BFDBFE; border-left: 6px solid #3B82F6; padding: 22px 26px; border-radius: 9px; margin-bottom: 22px;">
+<p style="margin: 0; font-size: 18px;">Un <strong>árbol</strong> es una estructura de datos no lineal formada por un conjunto de elementos denominados <strong>nodos</strong>, conectados mediante relaciones llamadas <strong>aristas</strong>.</p>
+</div>
+<p>A diferencia de las estructuras lineales, donde los elementos se organizan secuencialmente, un árbol establece relaciones jerárquicas entre sus componentes.</p>
+<p>En un árbol con raíz, existe un nodo principal desde el cual se originan las conexiones hacia los demás nodos.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Características principales</h4>
+<div style="display: flex; flex-wrap: wrap; gap: 14px; margin: 20px 0;">
+<div style="flex: 1 1 245px; background: #EFF6FF; border: 1px solid #BFDBFE; padding: 18px; border-radius: 8px;"><strong style="color: #1d4ed8;">Organización jerárquica</strong>
+<p style="margin: 8px 0 0;">Los elementos se distribuyen mediante relaciones de dependencia.</p>
+</div>
+<div style="flex: 1 1 245px; background: #ECFDF5; border: 1px solid #A7F3D0; padding: 18px; border-radius: 8px;"><strong style="color: #047857;">Nodo principal</strong>
+<p style="margin: 8px 0 0;">Existe una raíz desde la cual se organiza la estructura.</p>
+</div>
+<div style="flex: 1 1 245px; background: #FFFBEB; border: 1px solid #FDE68A; padding: 18px; border-radius: 8px;"><strong style="color: #92400e;">Relaciones padre-hijo</strong>
+<p style="margin: 8px 0 0;">Cada nodo, excepto la raíz, tiene exactamente un padre.</p>
+</div>
+<div style="flex: 1 1 245px; background: #F9F9FB; border: 1px solid #E5E7EB; padding: 18px; border-radius: 8px;"><strong style="color: #1f2937;">Ausencia de ciclos</strong>
+<p style="margin: 8px 0 0;">Las conexiones no forman caminos cerrados.</p>
+</div>
+</div>
+<h4 style="color: #1f2937;">Ejemplo de un árbol</h4>
+<div style="background: #FFFFFF; border: 1px solid #E5E7EB; padding: 20px; border-radius: 9px; text-align: center;"><svg viewbox="0 0 420 260" style="width: 100%; max-width: 460px; height: auto;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Árbol con raíz A; hijos B y C; hojas D, E, F y G"> <g stroke="#94A3B8" stroke-width="3"> <line x1="210" y1="42" x2="115" y2="118"></line> <line x1="210" y1="42" x2="305" y2="118"></line> <line x1="115" y1="118" x2="55" y2="205"></line> <line x1="115" y1="118" x2="165" y2="205"></line> <line x1="305" y1="118" x2="255" y2="205"></line> <line x1="305" y1="118" x2="365" y2="205"></line> </g> <g fill="#3B82F6"> <circle cx="210" cy="42" r="27"></circle> </g> <g fill="#10B981"> <circle cx="115" cy="118" r="25"></circle> <circle cx="305" cy="118" r="25"></circle> </g> <g fill="#64748B"> <circle cx="55" cy="205" r="23"></circle> <circle cx="165" cy="205" r="23"></circle> <circle cx="255" cy="205" r="23"></circle> <circle cx="365" cy="205" r="23"></circle> </g> <g fill="#FFFFFF" text-anchor="middle" font-family="Arial" font-size="18" font-weight="bold"> <text x="210" y="48">A</text> <text x="115" y="124">B</text> <text x="305" y="124">C</text> <text x="55" y="211">D</text> <text x="165" y="211">E</text> <text x="255" y="211">F</text> <text x="365" y="211">G</text> </g> </svg>
+<p style="font-size: 14px; color: #64748b; margin: 10px 0 0;">Representación de un árbol con siete nodos y tres niveles.</p>
+</div>
+<div style="background: #ECFDF5; border-left: 5px solid #10B981; padding: 18px 22px; border-radius: 8px; margin-top: 20px;">
+<p style="margin: 0;">El nodo <strong>A</strong> es la raíz. Los nodos <strong>B y C</strong> son sus hijos, mientras que <strong>D, E, F y G</strong> son las hojas del árbol.</p>
+</div>
+</section>
+<!-- 1.2 ORGANIZACIÓN JERÁRQUICA -->
+<section style="margin-bottom: 34px;">
+<h3 style="color: #1f2937; font-size: 24px; border-bottom: 3px solid #3B82F6; padding-bottom: 9px; margin-bottom: 20px;">1.2 Características y organización jerárquica</h3>
+<p>La organización jerárquica permite establecer relaciones de dependencia entre los nodos de un árbol. Cada nodo puede contener información y conexiones hacia otros nodos situados en niveles inferiores.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 16px; margin: 22px 0;">
+<div style="flex: 1 1 250px; background: #EFF6FF; border: 1px solid #BFDBFE; padding: 20px; border-radius: 9px;"><strong style="color: #1d4ed8;">Relación padre-hijo</strong>
+<p style="margin: 8px 0 0;">Un nodo se conecta directamente con otro situado en el siguiente nivel. A es padre de B y C.</p>
+</div>
+<div style="flex: 1 1 250px; background: #ECFDF5; border: 1px solid #A7F3D0; padding: 20px; border-radius: 9px;"><strong style="color: #047857;">Relación entre hermanos</strong>
+<p style="margin: 8px 0 0;">Dos o más nodos que comparten el mismo padre. B y C son hermanos.</p>
+</div>
+<div style="flex: 1 1 250px; background: #FFFBEB; border: 1px solid #FDE68A; padding: 20px; border-radius: 9px;"><strong style="color: #92400e;">Antepasados y descendientes</strong>
+<p style="margin: 8px 0 0;">Un nodo es antepasado de otro cuando pertenece al camino desde la raíz hasta ese nodo.</p>
+</div>
+<div style="flex: 1 1 250px; background: #F9F9FB; border: 1px solid #E5E7EB; padding: 20px; border-radius: 9px;"><strong>Subárbol</strong>
+<p style="margin: 8px 0 0;">Estructura formada por un nodo y todos sus descendientes. B, D y E constituyen un subárbol.</p>
+</div>
+</div>
+<h4 style="color: #1f2937; font-size: 20px;">Ejemplo práctico: organización institucional</h4>
+<p>Una institución puede representar su estructura organizativa mediante un árbol, estableciendo relaciones entre la dirección, los departamentos y las áreas.</p>
+<div style="background: #FFFFFF; border: 1px solid #E5E7EB; padding: 18px; border-radius: 9px; overflow-x: auto; text-align: center;"><svg viewbox="0 0 560 290" style="width: 100%; max-width: 560px; height: auto;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Organigrama de Dirección, departamentos académico y administrativo y áreas de Docencia e Investigación"> <g stroke="#94A3B8" stroke-width="3" fill="none"> <path d="M280 68 V100 H140 V130"></path> <path d="M280 100 H420 V130"></path> <path d="M140 185 V215 H75 V235"></path> <path d="M140 215 H205 V235"></path> </g> <rect x="205" y="20" width="150" height="48" rx="9" fill="#3B82F6"></rect> <text x="280" y="49" text-anchor="middle" fill="#FFFFFF" font-family="Arial" font-weight="bold" font-size="17">Dirección</text> <rect x="40" y="130" width="200" height="55" rx="9" fill="#10B981"></rect> <text x="140" y="153" text-anchor="middle" fill="white" font-family="Arial" font-size="15" font-weight="bold"> <tspan x="140">Departamento</tspan><tspan x="140" dy="18">académico</tspan> </text> <rect x="320" y="130" width="200" height="55" rx="9" fill="#10B981"></rect> <text x="420" y="153" text-anchor="middle" fill="white" font-family="Arial" font-size="15" font-weight="bold"> <tspan x="420">Departamento</tspan><tspan x="420" dy="18">administrativo</tspan> </text> <rect x="10" y="235" width="130" height="42" rx="7" fill="#E2E8F0"></rect> <rect x="150" y="235" width="130" height="42" rx="7" fill="#E2E8F0"></rect> <g font-family="Arial" font-size="14" fill="#1F2937" text-anchor="middle"> <text x="75" y="261">Docencia</text> <text x="215" y="261">Investigación</text> </g> </svg></div>
+<p>La Dirección constituye la raíz. Los departamentos son sus hijos y las áreas de Docencia e Investigación dependen directamente del Departamento Académico.</p>
+</section>
+<!-- 1.3 ELEMENTOS -->
+<section style="margin-bottom: 34px;">
+<h3 style="color: #1f2937; font-size: 24px; border-bottom: 3px solid #3B82F6; padding-bottom: 9px; margin-bottom: 20px;">1.3 Elementos fundamentales de un árbol</h3>
+<p>Para comprender el funcionamiento de un árbol, es necesario identificar los componentes que conforman su estructura.</p>
+<div style="overflow-x: auto; margin: 22px 0;">
+<table style="width: 100%; border-collapse: collapse; min-width: 650px;">
+<thead>
+<tr style="background: #3B82F6; color: white;">
+<th style="padding: 13px; text-align: left; border: 1px solid #2563EB;">Elemento</th>
+<th style="padding: 13px; text-align: left; border: 1px solid #2563EB;">Definición</th>
+<th style="padding: 13px; text-align: left; border: 1px solid #2563EB;">Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background: #FFFFFF;">
+<td style="padding: 12px; border: 1px solid #D1D5DB;"><strong>Nodo</strong></td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Elemento que almacena información dentro del árbol.</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">A, B, C</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 12px; border: 1px solid #D1D5DB;"><strong>Raíz</strong></td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Nodo principal que no tiene padre.</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">A</td>
+</tr>
+<tr style="background: #FFFFFF;">
+<td style="padding: 12px; border: 1px solid #D1D5DB;"><strong>Arista</strong></td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Conexión entre dos nodos.</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">A–B</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 12px; border: 1px solid #D1D5DB;"><strong>Padre</strong></td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Nodo que tiene uno o varios hijos directos.</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">B es padre de D</td>
+</tr>
+<tr style="background: #FFFFFF;">
+<td style="padding: 12px; border: 1px solid #D1D5DB;"><strong>Hijo</strong></td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Nodo conectado directamente a un padre.</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">D es hijo de B</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 12px; border: 1px solid #D1D5DB;"><strong>Hermanos</strong></td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Nodos que comparten el mismo padre.</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">D y E</td>
+</tr>
+<tr style="background: #FFFFFF;">
+<td style="padding: 12px; border: 1px solid #D1D5DB;"><strong>Hoja</strong></td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Nodo que no tiene hijos.</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">D, E, F, G</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 12px; border: 1px solid #D1D5DB;"><strong>Nodo interno</strong></td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Nodo que tiene al menos un hijo.</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">A, B, C</td>
+</tr>
+<tr style="background: #FFFFFF;">
+<td style="padding: 12px; border: 1px solid #D1D5DB;"><strong>Subárbol</strong></td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Nodo junto con todos sus descendientes.</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">B, D, E</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 style="color: #1d4ed8;">Propiedad fundamental</h4>
+<div style="background: #FFFBEB; border: 1px solid #FDE68A; padding: 22px; border-radius: 9px;">
+<p>Todo árbol no vacío con <strong>n nodos</strong> contiene exactamente <strong>n − 1 aristas</strong>.</p>
+<div style="background: #FFFFFF; border-radius: 7px; padding: 16px; text-align: center; font-size: 23px; font-weight: bold; color: #92400e;">Aristas = n − 1</div>
+<p style="margin-bottom: 0;">Si el árbol tiene siete nodos, entonces contiene <strong>7 − 1 = 6 aristas</strong>.</p>
+</div>
+</section>
+<!-- 1.4 PROPIEDADES -->
+<section style="margin-bottom: 34px;">
+<h3 style="color: #1f2937; font-size: 24px; border-bottom: 3px solid #3B82F6; padding-bottom: 9px; margin-bottom: 20px;">1.4 Conceptos de nivel, profundidad, altura y grado</h3>
+<p>Los árboles poseen propiedades que permiten describir su organización, tamaño y complejidad estructural.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 16px; margin: 22px 0;">
+<div style="flex: 1 1 250px; background: #EFF6FF; padding: 20px; border: 1px solid #BFDBFE; border-radius: 9px;"><strong style="color: #1d4ed8;">Nivel</strong>
+<p style="margin: 8px 0 0;">Posición de un nodo dentro de la jerarquía. Utilizaremos el nivel 0 para la raíz.</p>
+</div>
+<div style="flex: 1 1 250px; background: #ECFDF5; padding: 20px; border: 1px solid #A7F3D0; border-radius: 9px;"><strong style="color: #047857;">Profundidad</strong>
+<p style="margin: 8px 0 0;">Cantidad de aristas desde la raíz hasta un nodo.</p>
+</div>
+<div style="flex: 1 1 250px; background: #FFFBEB; padding: 20px; border: 1px solid #FDE68A; border-radius: 9px;"><strong style="color: #92400e;">Altura</strong>
+<p style="margin: 8px 0 0;">Cantidad de aristas del camino descendente más largo desde un nodo hasta una hoja.</p>
+</div>
+<div style="flex: 1 1 250px; background: #F9F9FB; padding: 20px; border: 1px solid #E5E7EB; border-radius: 9px;"><strong>Grado</strong>
+<p style="margin: 8px 0 0;">Cantidad de hijos directos que posee un nodo.</p>
+</div>
+</div>
+<h4 style="color: #1f2937;">Representación por niveles</h4>
+<div style="background: #FFFFFF; border: 1px solid #E5E7EB; padding: 20px; border-radius: 9px; text-align: center;"><svg viewbox="0 0 480 270" style="width: 100%; max-width: 520px; height: auto;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Árbol de tres niveles, desde nivel cero hasta nivel dos"> <rect x="68" y="12" width="400" height="62" rx="8" fill="#EFF6FF"></rect> <rect x="68" y="93" width="400" height="62" rx="8" fill="#ECFDF5"></rect> <rect x="68" y="176" width="400" height="76" rx="8" fill="#F9F9FB"></rect> <g font-family="Arial" font-size="15" font-weight="bold" fill="#475569"> <text x="8" y="48">N0</text> <text x="8" y="130">N1</text> <text x="8" y="219">N2</text> </g> <g stroke="#94A3B8" stroke-width="3"> <line x1="268" y1="43" x2="165" y2="123"></line> <line x1="268" y1="43" x2="365" y2="123"></line> <line x1="165" y1="123" x2="103" y2="215"></line> <line x1="165" y1="123" x2="220" y2="215"></line> <line x1="365" y1="123" x2="305" y2="215"></line> <line x1="365" y1="123" x2="425" y2="215"></line> </g> <g fill="#3B82F6"> <circle cx="268" cy="43" r="24"></circle> <circle cx="165" cy="123" r="24"></circle> <circle cx="365" cy="123" r="24"></circle> <circle cx="103" cy="215" r="24"></circle> <circle cx="220" cy="215" r="24"></circle> <circle cx="305" cy="215" r="24"></circle> <circle cx="425" cy="215" r="24"></circle> </g> <g fill="white" font-family="Arial" font-size="17" font-weight="bold" text-anchor="middle"> <text x="268" y="49">A</text> <text x="165" y="129">B</text> <text x="365" y="129">C</text> <text x="103" y="221">D</text> <text x="220" y="221">E</text> <text x="305" y="221">F</text> <text x="425" y="221">G</text> </g> </svg>
+<p style="font-size: 14px; color: #64748b;">N0: nivel cero; N1: nivel uno; N2: nivel dos.</p>
+</div>
+<div style="overflow-x: auto; margin-top: 22px;">
+<table style="width: 100%; border-collapse: collapse; min-width: 560px;">
+<thead>
+<tr style="background: #3B82F6; color: white;">
+<th style="padding: 13px; border: 1px solid #2563EB; text-align: left;">Propiedad</th>
+<th style="padding: 13px; border: 1px solid #2563EB; text-align: left;">Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background: white;">
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Nivel de A</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">0</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Nivel de B y C</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">1</td>
+</tr>
+<tr style="background: white;">
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Nivel de D, E, F y G</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">2</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Profundidad de E</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">2 aristas</td>
+</tr>
+<tr style="background: white;">
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Altura de B</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">1 arista</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Altura del árbol</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">2 aristas</td>
+</tr>
+<tr style="background: white;">
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Grado de C</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">2</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Grado de G</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="background: #FFFBEB; border-left: 5px solid #FBBF24; padding: 18px 22px; border-radius: 8px; margin-top: 20px;"><strong style="color: #92400e;">Diferencia importante</strong>
+<p style="margin: 8px 0 0;">La altura del árbol es de <strong>dos aristas</strong>, mientras que la estructura presenta <strong>tres niveles</strong>: 0, 1 y 2. La altura no debe confundirse con la cantidad de niveles.</p>
+</div>
+</section>
+<!-- 1.5 COMPARACIÓN -->
+<section style="margin-bottom: 34px;">
+<h3 style="color: #1f2937; font-size: 24px; border-bottom: 3px solid #3B82F6; padding-bottom: 9px; margin-bottom: 20px;">1.5 Diferencias entre estructuras lineales y árboles</h3>
+<p>Las estructuras lineales almacenan los elementos siguiendo una secuencia, mientras que los árboles permiten establecer relaciones jerárquicas. Esta diferencia influye en cómo se representan, consultan y procesan los datos.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 18px; margin: 22px 0;">
+<div style="flex: 1 1 280px; background: #EFF6FF; border: 1px solid #BFDBFE; padding: 20px; border-radius: 9px; text-align: center;">
+<h4 style="color: #1d4ed8; margin-top: 0;">Estructura lineal</h4>
+<svg viewbox="0 0 320 100" style="width: 100%; max-width: 320px; height: auto;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Secuencia de elementos A, B, C y D"> <g fill="#3B82F6"> <rect x="10" y="28" width="60" height="45" rx="7"></rect> <rect x="90" y="28" width="60" height="45" rx="7"></rect> <rect x="170" y="28" width="60" height="45" rx="7"></rect> <rect x="250" y="28" width="60" height="45" rx="7"></rect> </g> <g stroke="#64748B" stroke-width="2" fill="none"> <path d="M70 50 H87 M82 46 L87 50 L82 54"></path> <path d="M150 50 H167 M162 46 L167 50 L162 54"></path> <path d="M230 50 H247 M242 46 L247 50 L242 54"></path> </g> <g fill="white" font-family="Arial" font-size="20" font-weight="bold" text-anchor="middle"> <text x="40" y="57">A</text><text x="120" y="57">B</text> <text x="200" y="57">C</text><text x="280" y="57">D</text> </g> </svg>
+<p style="margin: 10px 0 0;">Los elementos siguen una secuencia.</p>
+</div>
+<div style="flex: 1 1 280px; background: #ECFDF5; border: 1px solid #A7F3D0; padding: 20px; border-radius: 9px; text-align: center;">
+<h4 style="color: #047857; margin-top: 0;">Estructura de árbol</h4>
+<svg viewbox="0 0 320 130" style="width: 100%; max-width: 320px; height: auto;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Árbol con raíz A, hijos B y C y descendientes D y E"> <g stroke="#94A3B8" stroke-width="3"> <line x1="160" y1="23" x2="80" y2="69"></line> <line x1="160" y1="23" x2="240" y2="69"></line> <line x1="80" y1="69" x2="35" y2="112"></line> <line x1="80" y1="69" x2="125" y2="112"></line> </g> <g fill="#10B981"> <circle cx="160" cy="23" r="19"></circle> <circle cx="80" cy="69" r="19"></circle> <circle cx="240" cy="69" r="19"></circle> <circle cx="35" cy="112" r="17"></circle> <circle cx="125" cy="112" r="17"></circle> </g> <g fill="white" font-family="Arial" font-size="15" font-weight="bold" text-anchor="middle"> <text x="160" y="29">A</text><text x="80" y="75">B</text> <text x="240" y="75">C</text><text x="35" y="117">D</text> <text x="125" y="117">E</text> </g> </svg>
+<p style="margin: 10px 0 0;">Los elementos se relacionan por jerarquías.</p>
+</div>
+</div>
+<div style="overflow-x: auto;">
+<table style="width: 100%; border-collapse: collapse; min-width: 670px;">
+<thead>
+<tr style="background: #3B82F6; color: white;">
+<th style="padding: 13px; border: 1px solid #2563EB; text-align: left;">Característica</th>
+<th style="padding: 13px; border: 1px solid #2563EB; text-align: left;">Estructuras lineales</th>
+<th style="padding: 13px; border: 1px solid #2563EB; text-align: left;">Árboles</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background: white;">
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Organización</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Secuencial</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Jerárquica</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Relaciones</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Entre posiciones de una secuencia</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Entre padres e hijos</td>
+</tr>
+<tr style="background: white;">
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Nodo raíz</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">No existe</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Existe</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Recorrido</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Generalmente secuencial</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Diferentes órdenes</td>
+</tr>
+<tr style="background: white;">
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Ejemplos</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Listas, pilas y colas</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Árboles generales y binarios</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Aplicaciones</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Turnos, historiales y registros</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Directorios, categorías y jerarquías</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="background: #F9F9FB; border: 1px solid #E5E7EB; padding: 22px; border-radius: 9px; margin-top: 22px;">
+<h4 style="color: #1f2937; margin-top: 0;">Caso práctico: plataforma académica</h4>
+<p>Supongamos que una plataforma necesita almacenar los nombres de 100 participantes y organizar programas académicos, asignaturas y unidades de aprendizaje.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 14px;">
+<div style="flex: 1 1 240px; background: #FFFFFF; border-left: 5px solid #3B82F6; padding: 16px; border-radius: 7px;"><strong>Utilizando una lista</strong>
+<p style="margin: 8px 0 0;">Es posible almacenar los nombres de los participantes secuencialmente.</p>
+</div>
+<div style="flex: 1 1 240px; background: #FFFFFF; border-left: 5px solid #10B981; padding: 16px; border-radius: 7px;"><strong>Utilizando un árbol</strong>
+<p style="margin: 8px 0 0;">Es posible representar las relaciones entre programas, asignaturas y unidades.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 1.6 REPRESENTACIÓN -->
+<section style="margin-bottom: 34px;">
+<h3 style="color: #1f2937; font-size: 24px; border-bottom: 3px solid #3B82F6; padding-bottom: 9px; margin-bottom: 20px;">1.6 Representación gráfica de árboles</h3>
+<p>La representación gráfica permite visualizar cómo se relacionan los nodos dentro de una estructura jerárquica. Generalmente, los árboles se dibujan colocando la raíz en la parte superior y distribuyendo los descendientes hacia abajo.</p>
+<h4 style="color: #1d4ed8;">Ejemplo: sistema de archivos</h4>
+<div style="background: #1F2937; padding: 22px; border-radius: 9px; overflow-x: auto; margin: 20px 0;">
+<pre style="font-family: Consolas, Monaco, monospace; color: #f9fafb; font-size: 15px; line-height: 1.7; margin: 0;"><code>Proyecto/
+│
+├── documentos/
+│   ├── informe.docx
+│   └── manual.pdf
+│
+├── codigo/
+│   ├── principal.py
+│   └── funciones.py
+│
+└── recursos/
+    ├── imagenes/
+    └── datos.csv</code></pre>
+</div>
+<div style="background: #ECFDF5; border: 1px solid #A7F3D0; padding: 20px; border-radius: 9px;">
+<h4 style="color: #047857; margin-top: 0;">Interpretación de la estructura</h4>
+<ul style="margin-bottom: 0; padding-left: 22px;">
+<li><strong>Proyecto:</strong> raíz de la jerarquía representada.</li>
+<li><strong>documentos, codigo y recursos:</strong> hijos directos de la raíz.</li>
+<li><strong>informe.docx y manual.pdf:</strong> hijos de documentos.</li>
+<li><strong>principal.py y funciones.py:</strong> hijos de codigo.</li>
+<li><strong>Archivos:</strong> representan nodos hoja.</li>
+<li><strong>Carpetas:</strong> pueden representar nodos internos cuando contienen elementos.</li>
+</ul>
+</div>
+<p style="margin-top: 20px;">Esta representación facilita el diseño de algoritmos que recorren directorios, buscan archivos o procesan información estructurada jerárquicamente.</p>
+</section>
+<!-- EJEMPLO PYTHON -->
+<section style="margin-bottom: 34px;">
+<h3 style="color: #1f2937; font-size: 24px; border-bottom: 3px solid #3B82F6; padding-bottom: 9px; margin-bottom: 20px;">Ejemplo introductorio en Python</h3>
+<p>Aunque posteriormente estudiaremos la implementación formal de árboles mediante clases, podemos comenzar representando una jerarquía sencilla utilizando diccionarios de Python.</p>
+<pre style="background: #1F2937; color: #f9fafb; font-family: Consolas, Monaco, monospace; border-radius: 9px; font-size: 14px; margin: 20px 0; overflow-x: auto; padding: 22px; line-height: 1.6;"><code>arbol = {
+    &quot;nombre&quot;: &quot;Proyecto&quot;,
+    &quot;hijos&quot;: [
+        {
+            &quot;nombre&quot;: &quot;Documentos&quot;,
+            &quot;hijos&quot;: [
+                {&quot;nombre&quot;: &quot;Informe&quot;, &quot;hijos&quot;: []},
+                {&quot;nombre&quot;: &quot;Manual&quot;, &quot;hijos&quot;: []}
+            ]
+        },
+        {
+            &quot;nombre&quot;: &quot;Código&quot;,
+            &quot;hijos&quot;: [
+                {&quot;nombre&quot;: &quot;Principal.py&quot;, &quot;hijos&quot;: []}
+            ]
+        }
+    ]
+}
+
+print(arbol[&quot;nombre&quot;])
+
+for hijo in arbol[&quot;hijos&quot;]:
+    print(hijo[&quot;nombre&quot;])</code></pre>
+<h4 style="color: #10b981;">Explicación del código</h4>
+<div style="display: flex; flex-wrap: wrap; gap: 14px;">
+<div style="flex: 1 1 230px; background: #EFF6FF; border: 1px solid #BFDBFE; padding: 18px; border-radius: 8px;"><strong style="color: #1d4ed8;">Diccionario principal</strong>
+<p style="margin: 8px 0 0;">Representa la raíz del árbol y contiene las claves nombre e hijos.</p>
+</div>
+<div style="flex: 1 1 230px; background: #ECFDF5; border: 1px solid #A7F3D0; padding: 18px; border-radius: 8px;"><strong style="color: #047857;">Clave nombre</strong>
+<p style="margin: 8px 0 0;">Almacena la información asociada con cada nodo.</p>
+</div>
+<div style="flex: 1 1 230px; background: #FFFBEB; border: 1px solid #FDE68A; padding: 18px; border-radius: 8px;"><strong style="color: #92400e;">Clave hijos</strong>
+<p style="margin: 8px 0 0;">Contiene una lista de diccionarios que representan los descendientes directos.</p>
+</div>
+<div style="flex: 1 1 230px; background: #F9F9FB; border: 1px solid #E5E7EB; padding: 18px; border-radius: 8px;"><strong>Ciclo for</strong>
+<p style="margin: 8px 0 0;">Recorre los hijos directos de la raíz y muestra sus nombres.</p>
+</div>
+</div>
+<h4 style="color: #1f2937; margin-top: 22px;">Salida del programa</h4>
+<pre style="background: #1F2937; color: #a7f3d0; padding: 20px; border-radius: 9px; font-family: Consolas, Monaco, monospace; font-size: 15px; overflow-x: auto;"><code>Proyecto
+Documentos
+Código</code></pre>
+<div style="background: #FFFBEB; border-left: 5px solid #FBBF24; padding: 18px 22px; border-radius: 8px;">
+<p style="margin: 0;">Este ejemplo representa una jerarquía mediante estructuras básicas de Python. Posteriormente se implementarán árboles utilizando clases, objetos y referencias entre nodos.</p>
+</div>
+</section>
+<!-- SÍNTESIS -->
+<div style="background: #1F2937; color: #ffffff; padding: 26px 30px; border-radius: 10px; margin-top: 30px;">
+<h3 style="margin: 0 0 12px; color: #fbbf24; font-size: 22px;">Síntesis</h3>
+<p>Los árboles son estructuras de datos no lineales que organizan la información jerárquicamente mediante nodos y aristas.</p>
+<p>Sus elementos principales incluyen la raíz, los nodos internos, las hojas y las relaciones entre padres e hijos. Propiedades como nivel, profundidad, altura y grado permiten describir su organización.</p>
+<p style="margin-bottom: 0;">A diferencia de las estructuras lineales, los árboles permiten representar relaciones de dependencia y son especialmente útiles en sistemas de archivos, estructuras organizativas y clasificación jerárquica de información.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+</div></main><div class="nav-buttons">
+<a href="../index.html" title="Anterior" class="nav-button nav-button-left"><span>Anterior</span></a>
+<a href="../html/2-tipos-y-clasificacion-de-arboles.html" title="Siguiente" class="nav-button nav-button-right"><span>Siguiente</span></a>
+</div>
+<footer id="siteFooter"><div id="siteFooterContent"> <div id="packageLicense" class="cc cc-by-sa"> <p> <span class="license-label">Licencia: </span><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="license">Creative Commons: Reconocimiento - compartir igual 4.0</a></p>
+</div>
+</div></footer>
+</div>
+<p id="made-with-eXe"> <a href="https://exelearning.net/" target="_blank" rel="noopener"> <span>Creado con eXeLearning <span>(Ventana nueva)</span></span></a></p>
+</body>
+</html>

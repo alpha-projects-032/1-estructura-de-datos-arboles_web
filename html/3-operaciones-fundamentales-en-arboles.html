@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="es" id="exe-page-mvsxbk9o-21atdh9tj">
+<head>
+<meta charset="utf-8">
+<meta name="generator" content="eXeLearning v4.0.5">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="license" type="text/html" href="https://creativecommons.org/licenses/by-sa/4.0/">
+<title>3. Operaciones fundamentales en árboles | 1. Estructura de Datos Arboles</title>
+<link rel="icon" type="image/x-icon" href="../libs/favicon.ico">
+<script>document.querySelector("html").classList.add("js");</script><script src="../libs/jquery/jquery.min.js"> </script><script src="../libs/common_i18n.js"> </script><script src="../libs/common.js"> </script><script src="../libs/exe_export.js"> </script><script src="../libs/bootstrap/bootstrap.bundle.min.js"> </script><link rel="stylesheet" href="../libs/bootstrap/bootstrap.min.css">
+<script src="../idevices/text/text.js"></script><link rel="stylesheet" href="../idevices/text/text.css">
+<link rel="stylesheet" href="../content/css/base.css"><script src="../theme/style.js"> </script><link rel="stylesheet" href="../theme/style.css">
+</head>
+<body class="exe-export exe-web-site">
+<script>document.body.className+=" js"</script>
+<div class="exe-content exe-export pre-js siteNav-hidden"><a href="#page-mvsxbk9o-21atdh9tj" id="skipNav">Skip to content</a> <nav id="siteNav">
+<ul>
+<li> <a href="../index.html" class="main-node no-ch">Inicio</a>
+</li>
+<li> <a href="../html/1-fundamentos-de-los-arboles-en-estructuras-de-dat.html" class="no-ch">1. Fundamentos de los árboles en estructuras de datos</a>
+</li>
+<li> <a href="../html/2-tipos-y-clasificacion-de-arboles.html" class="no-ch">2. Tipos y clasificación de árboles</a>
+</li>
+<li class="active"> <a href="../html/3-operaciones-fundamentales-en-arboles.html" class="active no-ch">3. Operaciones fundamentales en árboles</a>
+</li>
+<li> <a href="../html/4-recorridos-de-arboles.html" class="no-ch">4. Recorridos de árboles</a>
+</li>
+<li> <a href="../html/5-implementacion-y-aplicaciones-de-arboles-en-pyth.html" class="no-ch">5. Implementación y aplicaciones de árboles en Python</a>
+</li>
+<li> <a href="../html/repaso-estructura-de-datos-arboles.html" class="no-ch">Repaso: Estructura de Datos Arboles</a>
+</li>
+</ul>
+</nav><main id="page-mvsxbk9o-21atdh9tj" class="page"> 
+<header class="main-header">
+<div class="package-header"><p class="package-title">1. Estructura de Datos Arboles</p></div>
+<div class="page-header"><h1 class="page-title">3. Operaciones fundamentales en árboles</h1></div>
+</header><div id="page-content-page-mvsxbk9o-21atdh9tj" class="page-content">
+<article id="block-mvsyagsb-5tifai7uz" class="box">
+<header class="box-head no-icon">
+<h1 class="box-title">Contenido</h1>
+<button class="box-toggle box-toggle-on" title="Toggle content">
+<span>Toggle content</span>
+</button></header>
+<div class="box-content">
+<div id="idevice-1793242510713-srgc3dxj5" class="idevice_node text" data-idevice-path="../idevices/text/" data-idevice-type="text" data-idevice-component-type="json" data-idevice-json-data="{&quot;ideviceId&quot;:&quot;idevice-1793242510713-srgc3dxj5&quot;}">
+<div class="exe-text-template">
+    <div style="font-family: Arial, Helvetica, sans-serif; color: #1f2937; line-height: 1.65; max-width: 1200px; margin: 0 auto;"><!-- ENCABEZADO PRINCIPAL -->
+<div style="background: #3B82F6; color: #ffffff; padding: 26px 30px; border-radius: 10px; margin-bottom: 24px;">
+<div style="display: inline-block; background: #FBBF24; color: #1f2937; padding: 5px 12px; border-radius: 20px; font-size: 14px; font-weight: bold; margin-bottom: 12px;">Estructuras de datos no lineales</div>
+<h2 style="margin: 0 0 10px; color: #ffffff; font-size: 29px; font-weight: 600;">Subtema 3. Operaciones fundamentales en árboles</h2>
+<p style="margin: 0; color: #ffffff; font-size: 17px;">Comprender la creación de nodos y las operaciones de inserción, búsqueda y eliminación, preservando las propiedades estructurales de los árboles.</p>
+</div>
+<!-- INTRODUCCIÓN -->
+<div style="background: #F9F9FB; border: 1px solid #E5E7EB; border-left: 6px solid #10B981; padding: 20px 24px; border-radius: 8px; margin-bottom: 30px;">
+<h3 style="color: #1f2937; margin: 0 0 12px; font-size: 22px;">Introducción</h3>
+<p>Los árboles permiten organizar información de manera jerárquica mediante nodos relacionados entre sí. Una vez comprendidos sus elementos y principales clasificaciones, es necesario estudiar las operaciones utilizadas para construir, consultar y modificar estas estructuras.</p>
+<p>Las operaciones fundamentales incluyen la creación de nodos, inserción de elementos, búsqueda de valores, eliminación de nodos e identificación de relaciones jerárquicas.</p>
+<p style="margin-bottom: 0;">En este subtema utilizaremos principalmente <strong>árboles binarios de búsqueda (BST)</strong>, cuyas reglas de ordenamiento permiten comprender e implementar estas operaciones utilizando Python.</p>
+</div>
+<!-- 3.1 CREACIÓN -->
+<section style="margin-bottom: 34px;">
+<h3 style="color: #1f2937; font-size: 24px; border-bottom: 3px solid #3B82F6; padding-bottom: 9px; margin-bottom: 20px;">3.1 Creación de árboles y nodos</h3>
+<p>La creación de un árbol consiste en establecer una estructura jerárquica formada por nodos y conexiones entre ellos.</p>
+<div style="background: #EFF6FF; border: 1px solid #BFDBFE; border-left: 6px solid #3B82F6; padding: 22px 26px; border-radius: 9px; margin-bottom: 22px;">
+<p style="margin: 0; font-size: 18px;">Un <strong>nodo</strong> es la unidad básica de un árbol. Contiene información y referencias hacia otros nodos, según las características de la estructura utilizada.</p>
+</div>
+<p>En un árbol binario, cada nodo puede contener tres componentes principales:</p>
+<div style="display: flex; flex-wrap: wrap; gap: 14px; margin: 20px 0;">
+<div style="flex: 1 1 230px; background: #EFF6FF; border: 1px solid #BFDBFE; padding: 18px; border-radius: 8px;"><strong style="color: #1d4ed8;">Valor</strong>
+<p style="margin: 8px 0 0;">Información almacenada dentro del nodo.</p>
+</div>
+<div style="flex: 1 1 230px; background: #ECFDF5; border: 1px solid #A7F3D0; padding: 18px; border-radius: 8px;"><strong style="color: #047857;">Referencia izquierda</strong>
+<p style="margin: 8px 0 0;">Conexión hacia el hijo izquierdo.</p>
+</div>
+<div style="flex: 1 1 230px; background: #FFFBEB; border: 1px solid #FDE68A; padding: 18px; border-radius: 8px;"><strong style="color: #92400e;">Referencia derecha</strong>
+<p style="margin: 8px 0 0;">Conexión hacia el hijo derecho.</p>
+</div>
+</div>
+<h4 style="color: #1d4ed8; font-size: 20px;">Representación de un nodo</h4>
+<div style="background: #FFFFFF; border: 1px solid #E5E7EB; padding: 22px; border-radius: 9px; text-align: center;"><svg viewbox="0 0 440 150" style="width: 100%; max-width: 480px; height: auto;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Nodo binario con referencias izquierda y derecha y valor 50"> <rect x="18" y="20" width="404" height="88" rx="10" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"></rect> <line x1="153" y1="20" x2="153" y2="108" stroke="#3B82F6" stroke-width="2"></line> <line x1="287" y1="20" x2="287" y2="108" stroke="#3B82F6" stroke-width="2"></line> <g fill="#1D4ED8" font-family="Arial" font-size="15" text-anchor="middle"> <text x="85" y="49">Izquierdo</text> <text x="220" y="49">Valor</text> <text x="354" y="49">Derecho</text> </g> <g fill="#1F2937" font-family="Arial" font-size="20" font-weight="bold" text-anchor="middle"> <text x="85" y="83">None</text> <text x="220" y="83">50</text> <text x="354" y="83">None</text> </g> <text x="220" y="137" fill="#64748B" font-family="Arial" font-size="14" text-anchor="middle">Estructura básica de un nodo binario</text> </svg></div>
+<p>Cuando un nodo todavía no posee hijos, las referencias izquierda y derecha pueden inicializarse con <code>None</code>.</p>
+<h4 style="color: #10b981; font-size: 20px;">Implementación en Python</h4>
+<pre style="background: #1F2937; color: #f9fafb; font-family: Consolas, Monaco, monospace; font-size: 14px; line-height: 1.7; border-radius: 9px; padding: 22px; overflow-x: auto;"><code>class Nodo:
+    def __init__(self, valor):
+        self.valor = valor
+        self.izquierdo = None
+        self.derecho = None
+
+
+raiz = Nodo(50)
+
+print(&quot;Raíz:&quot;, raiz.valor)</code></pre>
+<div style="background: #ECFDF5; border: 1px solid #A7F3D0; padding: 18px 22px; border-radius: 8px;"><strong style="color: #047857;">Salida del programa</strong>
+<pre style="margin: 10px 0 0; white-space: pre-wrap; font-family: Consolas, Monaco, monospace; color: #1f2937;">Raíz: 50</pre>
+</div>
+<p>La clase <code>Nodo</code> establece el valor y las referencias de cada elemento. La instrucción <code>raiz = Nodo(50)</code> crea el primer nodo del árbol.</p>
+<h4 style="color: #1f2937;">Creación manual de un árbol binario</h4>
+<pre style="background: #1F2937; color: #f9fafb; font-family: Consolas, Monaco, monospace; font-size: 14px; line-height: 1.7; border-radius: 9px; padding: 22px; overflow-x: auto;"><code>raiz = Nodo(50)
+
+raiz.izquierdo = Nodo(30)
+raiz.derecho = Nodo(70)
+
+raiz.izquierdo.izquierdo = Nodo(20)
+raiz.izquierdo.derecho = Nodo(40)</code></pre>
+<div style="background: #FFFFFF; border: 1px solid #E5E7EB; padding: 18px; border-radius: 9px; text-align: center;"><svg viewbox="0 0 380 245" style="width: 100%; max-width: 400px; height: auto;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Árbol con raíz 50, hijos 30 y 70, y nodos 20 y 40"> <g stroke="#94A3B8" stroke-width="3"> <line x1="190" y1="40" x2="100" y2="123"></line> <line x1="190" y1="40" x2="280" y2="123"></line> <line x1="100" y1="123" x2="48" y2="210"></line> <line x1="100" y1="123" x2="152" y2="210"></line> </g> <g fill="#3B82F6"><circle cx="190" cy="40" r="27"></circle></g> <g fill="#10B981"><circle cx="100" cy="123" r="25"></circle><circle cx="280" cy="123" r="25"></circle></g> <g fill="#64748B"><circle cx="48" cy="210" r="23"></circle><circle cx="152" cy="210" r="23"></circle></g> <g fill="white" font-family="Arial" font-size="17" font-weight="bold" text-anchor="middle"> <text x="190" y="46">50</text><text x="100" y="129">30</text> <text x="280" y="129">70</text><text x="48" y="216">20</text> <text x="152" y="216">40</text> </g> </svg>
+<p style="font-size: 14px; color: #64748b; margin: 8px 0 0;">Árbol construido mediante referencias entre objetos.</p>
+</div>
+<div style="background: #FFFBEB; border-left: 5px solid #FBBF24; padding: 18px 22px; border-radius: 8px; margin-top: 20px;">
+<p style="margin: 0;">La creación manual resulta útil para comprender la estructura, pero cuando se necesita agregar una gran cantidad de valores es recomendable implementar métodos de inserción.</p>
+</div>
+</section>
+<!-- 3.2 INSERCIÓN -->
+<section style="margin-bottom: 34px;">
+<h3 style="color: #1f2937; font-size: 24px; border-bottom: 3px solid #3B82F6; padding-bottom: 9px; margin-bottom: 20px;">3.2 Inserción de nuevos elementos</h3>
+<div style="background: #EFF6FF; border: 1px solid #BFDBFE; border-left: 6px solid #3B82F6; padding: 22px 26px; border-radius: 9px; margin-bottom: 22px;">
+<p style="margin: 0; font-size: 18px;">La <strong>inserción</strong> consiste en agregar un nuevo nodo dentro del árbol, respetando las reglas de organización de la estructura.</p>
+</div>
+<p>En un árbol binario de búsqueda, cada valor se compara con los nodos existentes para determinar dónde debe insertarse.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 14px; margin: 20px 0;">
+<div style="flex: 1 1 230px; background: #EFF6FF; border: 1px solid #BFDBFE; padding: 18px; border-radius: 8px;"><strong style="color: #1d4ed8;">Valor menor</strong>
+<p style="margin: 8px 0 0;">Se continúa hacia el subárbol izquierdo.</p>
+</div>
+<div style="flex: 1 1 230px; background: #ECFDF5; border: 1px solid #A7F3D0; padding: 18px; border-radius: 8px;"><strong style="color: #047857;">Valor mayor</strong>
+<p style="margin: 8px 0 0;">Se continúa hacia el subárbol derecho.</p>
+</div>
+<div style="flex: 1 1 230px; background: #FFFBEB; border: 1px solid #FDE68A; padding: 18px; border-radius: 8px;"><strong style="color: #92400e;">Referencia vacía</strong>
+<p style="margin: 8px 0 0;">Se crea el nuevo nodo en esa posición.</p>
+</div>
+</div>
+<h4 style="color: #1f2937;">Ejemplo: inserción del valor 60</h4>
+<ol style="padding-left: 24px;">
+<li style="margin-bottom: 8px;">Se compara 60 con la raíz 50.</li>
+<li style="margin-bottom: 8px;">Como 60 es mayor que 50, se continúa hacia la derecha.</li>
+<li style="margin-bottom: 8px;">Se compara 60 con 70.</li>
+<li style="margin-bottom: 8px;">Como 60 es menor que 70, se continúa hacia la izquierda.</li>
+<li>La posición está vacía, por lo que se crea el nodo 60.</li>
+</ol>
+<div style="background: #FFFFFF; border: 1px solid #E5E7EB; padding: 20px; border-radius: 9px; text-align: center;"><svg viewbox="0 0 420 265" style="width: 100%; max-width: 460px; height: auto;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Inserción del valor 60 como hijo izquierdo del nodo 70"> <g stroke="#94A3B8" stroke-width="3"> <line x1="210" y1="40" x2="115" y2="120"></line> <line x1="210" y1="40" x2="305" y2="120"></line> <line x1="115" y1="120" x2="55" y2="215"></line> <line x1="115" y1="120" x2="170" y2="215"></line> </g> <line x1="305" y1="120" x2="260" y2="215" stroke="#10B981" stroke-width="5" stroke-dasharray="8 5"></line> <g fill="#3B82F6"> <circle cx="210" cy="40" r="27"></circle> <circle cx="115" cy="120" r="25"></circle> <circle cx="305" cy="120" r="25"></circle> <circle cx="55" cy="215" r="23"></circle> <circle cx="170" cy="215" r="23"></circle> </g> <circle cx="260" cy="215" r="25" fill="#10B981"></circle> <g fill="white" font-family="Arial" font-size="17" font-weight="bold" text-anchor="middle"> <text x="210" y="46">50</text> <text x="115" y="126">30</text> <text x="305" y="126">70</text> <text x="55" y="221">20</text> <text x="170" y="221">40</text> <text x="260" y="221">60</text> </g> <text x="260" y="258" fill="#047857" font-family="Arial" font-size="13" font-weight="bold" text-anchor="middle">Nuevo nodo</text> </svg></div>
+<h4 style="color: #10b981; margin-top: 24px;">Implementación de inserción en Python</h4>
+<pre style="background: #1F2937; color: #f9fafb; font-family: Consolas, Monaco, monospace; font-size: 14px; line-height: 1.7; border-radius: 9px; padding: 22px; overflow-x: auto;"><code>class Nodo:
+    def __init__(self, valor):
+        self.valor = valor
+        self.izquierdo = None
+        self.derecho = None
+
+
+def insertar(raiz, valor):
+    if raiz is None:
+        return Nodo(valor)
+
+    if valor &lt; raiz.valor:
+        raiz.izquierdo = insertar(raiz.izquierdo, valor)
+
+    elif valor &gt; raiz.valor:
+        raiz.derecho = insertar(raiz.derecho, valor)
+
+    return raiz
+
+
+raiz = None
+
+for valor in [50, 30, 70, 20, 40, 60]:
+    raiz = insertar(raiz, valor)
+
+print(&quot;Raíz:&quot;, raiz.valor)
+print(&quot;Hijo izquierdo de 70:&quot;, raiz.derecho.izquierdo.valor)</code></pre>
+<div style="background: #ECFDF5; border: 1px solid #A7F3D0; padding: 18px 22px; border-radius: 8px;"><strong style="color: #047857;">Salida del programa</strong>
+<pre style="margin: 10px 0 0; white-space: pre-wrap; font-family: Consolas, Monaco, monospace; color: #1f2937;">Raíz: 50
+Hijo izquierdo de 70: 60</pre>
+</div>
+<h4 style="color: #1f2937; margin-top: 22px;">Explicación del código</h4>
+<p>La función <code>insertar()</code> recibe la raíz del árbol o subárbol y el valor que debe agregarse.</p>
+<p>Si encuentra una referencia <code>None</code>, crea un nuevo nodo. Si el valor es menor que el nodo actual, continúa por la izquierda; si es mayor, continúa por la derecha.</p>
+<div style="background: #FFFBEB; border-left: 5px solid #FBBF24; padding: 18px 22px; border-radius: 8px;">
+<p style="margin: 0;"><strong>Recursividad:</strong> la función se llama a sí misma para recorrer los subárboles hasta localizar una posición disponible. En esta implementación, los valores duplicados se ignoran.</p>
+</div>
+</section>
+<!-- 3.3 BÚSQUEDA -->
+<section style="margin-bottom: 34px;">
+<h3 style="color: #1f2937; font-size: 24px; border-bottom: 3px solid #3B82F6; padding-bottom: 9px; margin-bottom: 20px;">3.3 Búsqueda de elementos</h3>
+<div style="background: #EFF6FF; border: 1px solid #BFDBFE; border-left: 6px solid #3B82F6; padding: 22px 26px; border-radius: 9px; margin-bottom: 22px;">
+<p style="margin: 0; font-size: 18px;">La <strong>búsqueda</strong> es la operación que permite determinar si un valor se encuentra almacenado dentro de un árbol.</p>
+</div>
+<p>En un BST, las comparaciones permiten seleccionar la rama que podría contener el valor buscado, evitando recorrer innecesariamente otras partes de la estructura.</p>
+<h4 style="color: #1d4ed8;">Proceso de búsqueda</h4>
+<ol style="padding-left: 24px;">
+<li style="margin-bottom: 8px;">Se comienza desde la raíz.</li>
+<li style="margin-bottom: 8px;">Se compara el valor buscado con el nodo actual.</li>
+<li style="margin-bottom: 8px;">Si son iguales, la búsqueda termina exitosamente.</li>
+<li style="margin-bottom: 8px;">Si el valor es menor, se continúa hacia la izquierda.</li>
+<li style="margin-bottom: 8px;">Si es mayor, se continúa hacia la derecha.</li>
+<li>Si se alcanza una referencia vacía, el valor no existe.</li>
+</ol>
+<h4 style="color: #1f2937;">Ejemplo: búsqueda del valor 40</h4>
+<div style="background: #FFFFFF; border: 1px solid #E5E7EB; padding: 20px; border-radius: 9px; text-align: center;"><svg viewbox="0 0 380 245" style="width: 100%; max-width: 420px; height: auto;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ruta de búsqueda desde 50 hacia 30 y luego 40"> <g stroke="#94A3B8" stroke-width="3"> <line x1="190" y1="40" x2="105" y2="122"></line> <line x1="190" y1="40" x2="285" y2="122"></line> <line x1="105" y1="122" x2="50" y2="210"></line> <line x1="105" y1="122" x2="160" y2="210"></line> </g> <path d="M190 40 L105 122 L160 210" fill="none" stroke="#10B981" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path> <g fill="#3B82F6"> <circle cx="190" cy="40" r="26"></circle> <circle cx="105" cy="122" r="25"></circle> <circle cx="285" cy="122" r="25"></circle> <circle cx="50" cy="210" r="23"></circle> </g> <circle cx="160" cy="210" r="26" fill="#10B981"></circle> <g fill="#FFFFFF" font-family="Arial" font-size="17" font-weight="bold" text-anchor="middle"> <text x="190" y="46">50</text> <text x="105" y="128">30</text> <text x="285" y="128">70</text> <text x="50" y="216">20</text> <text x="160" y="216">40</text> </g> </svg>
+<p style="font-size: 14px; color: #047857; font-weight: bold; margin: 10px 0 0;">Camino: 50 → 30 → 40</p>
+</div>
+<h4 style="color: #10b981; margin-top: 24px;">Implementación de búsqueda en Python</h4>
+<p>El siguiente ejemplo utiliza la variable <code>raiz</code> creada en el apartado anterior.</p>
+<pre style="background: #1F2937; color: #f9fafb; font-family: Consolas, Monaco, monospace; font-size: 14px; line-height: 1.7; border-radius: 9px; padding: 22px; overflow-x: auto;"><code>def buscar(raiz, valor):
+    actual = raiz
+
+    while actual is not None:
+        if valor == actual.valor:
+            return True
+
+        if valor &lt; actual.valor:
+            actual = actual.izquierdo
+        else:
+            actual = actual.derecho
+
+    return False
+
+
+print(buscar(raiz, 40))
+print(buscar(raiz, 90))</code></pre>
+<div style="background: #ECFDF5; border: 1px solid #A7F3D0; padding: 18px 22px; border-radius: 8px;"><strong style="color: #047857;">Salida del programa</strong>
+<pre style="margin: 10px 0 0; white-space: pre-wrap; font-family: Consolas, Monaco, monospace; color: #1f2937;">True
+False</pre>
+</div>
+<p>La función utiliza un ciclo <code>while</code> para desplazarse por el árbol. Devuelve <code>True</code> cuando encuentra el valor y <code>False</code> cuando llega a una referencia vacía.</p>
+<h4 style="color: #1f2937;">Eficiencia de búsqueda</h4>
+<div style="overflow-x: auto;">
+<table style="width: 100%; border-collapse: collapse; min-width: 500px;">
+<thead>
+<tr style="background: #3B82F6; color: white;">
+<th style="padding: 13px; border: 1px solid #2563EB; text-align: left;">Organización del BST</th>
+<th style="padding: 13px; border: 1px solid #2563EB; text-align: left;">Complejidad temporal</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background: #ECFDF5;">
+<td style="padding: 13px; border: 1px solid #D1D5DB;">Árbol equilibrado</td>
+<td style="padding: 13px; border: 1px solid #D1D5DB;"><strong>O(log n)</strong></td>
+</tr>
+<tr style="background: #FFFBEB;">
+<td style="padding: 13px; border: 1px solid #D1D5DB;">Árbol degenerado</td>
+<td style="padding: 13px; border: 1px solid #D1D5DB;"><strong>O(n)</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- 3.4 ELIMINACIÓN -->
+<section style="margin-bottom: 34px;">
+<h3 style="color: #1f2937; font-size: 24px; border-bottom: 3px solid #3B82F6; padding-bottom: 9px; margin-bottom: 20px;">3.4 Eliminación de nodos</h3>
+<div style="background: #EFF6FF; border: 1px solid #BFDBFE; border-left: 6px solid #3B82F6; padding: 22px 26px; border-radius: 9px; margin-bottom: 22px;">
+<p style="margin: 0; font-size: 18px;">La <strong>eliminación</strong> consiste en retirar un nodo del árbol sin alterar las propiedades que determinan su organización.</p>
+</div>
+<p>En un árbol binario de búsqueda existen tres casos principales, dependiendo de la cantidad de hijos del nodo que se desea eliminar.</p>
+<!-- CASO 1 -->
+<h4 style="color: #1d4ed8; font-size: 20px;">Caso 1. Eliminación de un nodo hoja</h4>
+<p>Un nodo hoja no tiene hijos, por lo que puede eliminarse directamente sin reorganizar otros descendientes.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 16px; margin: 20px 0;">
+<div style="flex: 1 1 230px; background: #F9F9FB; border: 1px solid #E5E7EB; border-radius: 9px; padding: 18px; text-align: center;"><strong>Antes de eliminar</strong> <svg viewbox="0 0 240 170" style="width: 100%; max-width: 240px; height: auto;" xmlns="http://www.w3.org/2000/svg"> <g stroke="#94A3B8" stroke-width="3"> <line x1="120" y1="35" x2="65" y2="125"></line> <line x1="120" y1="35" x2="175" y2="125"></line> </g> <g fill="#3B82F6"><circle cx="120" cy="35" r="25"></circle><circle cx="65" cy="125" r="24"></circle></g> <circle cx="175" cy="125" r="25" fill="#EF4444"></circle> <g fill="white" font-family="Arial" font-size="17" font-weight="bold" text-anchor="middle"> <text x="120" y="41">50</text><text x="65" y="131">30</text><text x="175" y="131">70</text> </g> </svg></div>
+<div style="flex: 1 1 230px; background: #ECFDF5; border: 1px solid #A7F3D0; border-radius: 9px; padding: 18px; text-align: center;"><strong style="color: #047857;">Después de eliminar</strong> <svg viewbox="0 0 240 170" style="width: 100%; max-width: 240px; height: auto;" xmlns="http://www.w3.org/2000/svg"> <line x1="120" y1="35" x2="65" y2="125" stroke="#94A3B8" stroke-width="3"></line> <g fill="#10B981"><circle cx="120" cy="35" r="25"></circle><circle cx="65" cy="125" r="24"></circle></g> <g fill="white" font-family="Arial" font-size="17" font-weight="bold" text-anchor="middle"> <text x="120" y="41">50</text><text x="65" y="131">30</text> </g> </svg></div>
+</div>
+<!-- CASO 2 -->
+<h4 style="color: #047857; font-size: 20px;">Caso 2. Eliminación de un nodo con un hijo</h4>
+<p>Cuando un nodo tiene un único hijo, este ocupa la posición del nodo eliminado.</p>
+<div style="background: #1F2937; padding: 20px; border-radius: 9px; overflow-x: auto;">
+<pre style="font-family: Consolas, Monaco, monospace; color: #f9fafb; font-size: 15px; line-height: 1.7; margin: 0;"><code>Antes:              Después:
+
+    50                  50
+      \                   \
+      70                  60
+     /
+    60</code></pre>
+</div>
+<p>Al eliminar el nodo 70, su único hijo 60 pasa a ocupar su posición.</p>
+<!-- CASO 3 -->
+<h4 style="color: #92400e; font-size: 20px; margin-top: 26px;">Caso 3. Eliminación de un nodo con dos hijos</h4>
+<p>Cuando un nodo tiene dos hijos, debe reemplazarse utilizando un valor que permita mantener el ordenamiento del BST.</p>
+<div style="background: #FFFBEB; border: 1px solid #FDE68A; padding: 20px; border-radius: 9px;"><strong style="color: #92400e;">Sucesor inorden</strong>
+<p style="margin: 8px 0 0;">Corresponde al menor valor del subárbol derecho. También es posible utilizar el predecesor inorden, que es el mayor valor del subárbol izquierdo.</p>
+</div>
+<h4 style="color: #1f2937;">Ejemplo: eliminación del valor 50</h4>
+<ol style="padding-left: 24px;">
+<li style="margin-bottom: 8px;">Se identifica el nodo 50.</li>
+<li style="margin-bottom: 8px;">Se localiza el menor valor del subárbol derecho: 60.</li>
+<li style="margin-bottom: 8px;">El valor 50 se reemplaza por 60.</li>
+<li>Se elimina el nodo original que contenía 60.</li>
+</ol>
+<div style="background: #FFFFFF; border: 1px solid #E5E7EB; padding: 20px; border-radius: 9px; text-align: center;"><svg viewbox="0 0 420 260" style="width: 100%; max-width: 440px; height: auto;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Árbol después de eliminar 50 y reemplazarlo por su sucesor 60"> <g stroke="#94A3B8" stroke-width="3"> <line x1="210" y1="40" x2="115" y2="122"></line> <line x1="210" y1="40" x2="305" y2="122"></line> <line x1="115" y1="122" x2="55" y2="218"></line> <line x1="115" y1="122" x2="170" y2="218"></line> <line x1="305" y1="122" x2="365" y2="218"></line> </g> <circle cx="210" cy="40" r="28" fill="#10B981"></circle> <g fill="#3B82F6"> <circle cx="115" cy="122" r="25"></circle> <circle cx="305" cy="122" r="25"></circle> <circle cx="55" cy="218" r="23"></circle> <circle cx="170" cy="218" r="23"></circle> <circle cx="365" cy="218" r="23"></circle> </g> <g fill="white" font-family="Arial" font-size="17" font-weight="bold" text-anchor="middle"> <text x="210" y="46">60</text> <text x="115" y="128">30</text> <text x="305" y="128">70</text> <text x="55" y="224">20</text> <text x="170" y="224">40</text> <text x="365" y="224">80</text> </g> </svg>
+<p style="font-size: 14px; color: #047857; margin: 10px 0 0;">El valor 60 sustituye al 50 y conserva las propiedades del BST.</p>
+</div>
+<h4 style="color: #10b981; margin-top: 24px;">Implementación de eliminación en Python</h4>
+<p>Este código utiliza la clase <code>Nodo</code> y la función <code>insertar()</code> definidas anteriormente. Se considera un árbol que contiene los valores 50, 30, 70, 20, 40, 60 y 80.</p>
+<pre style="background: #1F2937; color: #f9fafb; font-family: Consolas, Monaco, monospace; font-size: 14px; line-height: 1.7; border-radius: 9px; padding: 22px; overflow-x: auto;"><code>def eliminar(raiz, valor):
+    if raiz is None:
+        return None
+
+    if valor &lt; raiz.valor:
+        raiz.izquierdo = eliminar(raiz.izquierdo, valor)
+
+    elif valor &gt; raiz.valor:
+        raiz.derecho = eliminar(raiz.derecho, valor)
+
+    else:
+        # Caso: cero o un hijo
+        if raiz.izquierdo is None:
+            return raiz.derecho
+
+        if raiz.derecho is None:
+            return raiz.izquierdo
+
+        # Caso: dos hijos
+        sucesor = raiz.derecho
+
+        while sucesor.izquierdo is not None:
+            sucesor = sucesor.izquierdo
+
+        raiz.valor = sucesor.valor
+
+        raiz.derecho = eliminar(
+            raiz.derecho,
+            sucesor.valor
+        )
+
+    return raiz
+
+
+# Crear el árbol del ejemplo
+raiz = None
+for valor in [50, 30, 70, 20, 40, 60, 80]:
+    raiz = insertar(raiz, valor)
+
+raiz = eliminar(raiz, 50)
+
+print(&quot;Nueva raíz:&quot;, raiz.valor)</code></pre>
+<div style="background: #ECFDF5; border: 1px solid #A7F3D0; padding: 18px 22px; border-radius: 8px;"><strong style="color: #047857;">Salida del programa</strong>
+<pre style="margin: 10px 0 0; font-family: Consolas, Monaco, monospace; white-space: pre-wrap; color: #1f2937;">Nueva raíz: 60</pre>
+</div>
+<p>La función utiliza recursividad para localizar el nodo y reorganizar las conexiones necesarias. Es importante actualizar la referencia de la raíz con el valor devuelto, ya que esta puede cambiar después de eliminar un elemento.</p>
+</section>
+<!-- 3.5 RELACIONES -->
+<section style="margin-bottom: 34px;">
+<h3 style="color: #1f2937; font-size: 24px; border-bottom: 3px solid #3B82F6; padding-bottom: 9px; margin-bottom: 20px;">3.5 Identificación de nodos padres, hijos y hojas</h3>
+<p>Además de insertar, buscar y eliminar, es importante identificar las relaciones jerárquicas entre los elementos del árbol.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 14px; margin: 20px 0;">
+<div style="flex: 1 1 230px; background: #EFF6FF; border: 1px solid #BFDBFE; padding: 18px; border-radius: 8px;"><strong style="color: #1d4ed8;">Raíz</strong>
+<p style="margin: 8px 0 0;">Nodo principal que no tiene padre.</p>
+</div>
+<div style="flex: 1 1 230px; background: #ECFDF5; border: 1px solid #A7F3D0; padding: 18px; border-radius: 8px;"><strong style="color: #047857;">Padre</strong>
+<p style="margin: 8px 0 0;">Nodo que posee uno o varios hijos directos.</p>
+</div>
+<div style="flex: 1 1 230px; background: #FFFBEB; border: 1px solid #FDE68A; padding: 18px; border-radius: 8px;"><strong style="color: #92400e;">Hijos</strong>
+<p style="margin: 8px 0 0;">Nodos conectados directamente a un padre.</p>
+</div>
+<div style="flex: 1 1 230px; background: #F9F9FB; border: 1px solid #E5E7EB; padding: 18px; border-radius: 8px;"><strong>Hojas</strong>
+<p style="margin: 8px 0 0;">Nodos que no tienen descendientes directos.</p>
+</div>
+</div>
+<h4 style="color: #1d4ed8;">Identificación de la raíz</h4>
+<pre style="background: #1F2937; color: #f9fafb; font-family: Consolas, Monaco, monospace; font-size: 14px; border-radius: 9px; padding: 20px; overflow-x: auto;"><code>print(&quot;Raíz:&quot;, raiz.valor)</code></pre>
+<p>La variable <code>raiz</code> mantiene una referencia al nodo principal del árbol.</p>
+<h4 style="color: #1d4ed8;">Identificación de los hijos</h4>
+<pre style="background: #1F2937; color: #f9fafb; font-family: Consolas, Monaco, monospace; font-size: 14px; border-radius: 9px; padding: 20px; overflow-x: auto;"><code>if raiz.izquierdo is not None:
+    print(&quot;Hijo izquierdo:&quot;, raiz.izquierdo.valor)
+
+if raiz.derecho is not None:
+    print(&quot;Hijo derecho:&quot;, raiz.derecho.valor)</code></pre>
+<p>Antes de consultar un hijo debe verificarse que su referencia no sea <code>None</code>.</p>
+<h4 style="color: #047857;">Identificación de nodos hoja</h4>
+<pre style="background: #1F2937; color: #f9fafb; font-family: Consolas, Monaco, monospace; font-size: 14px; line-height: 1.7; border-radius: 9px; padding: 22px; overflow-x: auto;"><code>def es_hoja(nodo):
+    if nodo is None:
+        return False
+
+    return (
+        nodo.izquierdo is None
+        and nodo.derecho is None
+    )
+
+
+print(es_hoja(raiz.izquierdo.izquierdo))</code></pre>
+<div style="background: #ECFDF5; border: 1px solid #A7F3D0; padding: 16px 20px; border-radius: 8px;"><strong style="color: #047857;">Salida: True</strong>
+<p style="margin: 8px 0 0;">El nodo consultado no tiene hijos y, por lo tanto, es una hoja.</p>
+</div>
+<h4 style="color: #92400e; margin-top: 24px;">Identificación de un nodo padre</h4>
+<p>La clase utilizada no almacena una referencia directa hacia el padre. Por ello, podemos recorrer el BST para localizar el nodo que contiene al hijo buscado.</p>
+<pre style="background: #1F2937; color: #f9fafb; font-family: Consolas, Monaco, monospace; font-size: 14px; line-height: 1.7; border-radius: 9px; padding: 22px; overflow-x: auto;"><code>def buscar_padre(raiz, valor):
+    actual = raiz
+    padre = None
+
+    while actual is not None:
+        if valor == actual.valor:
+            return padre
+
+        padre = actual
+
+        if valor &lt; actual.valor:
+            actual = actual.izquierdo
+        else:
+            actual = actual.derecho
+
+    return None
+
+
+padre = buscar_padre(raiz, 40)
+
+if padre is not None:
+    print(&quot;Padre:&quot;, padre.valor)
+else:
+    print(&quot;No se encontró un padre&quot;)</code></pre>
+<div style="background: #ECFDF5; border: 1px solid #A7F3D0; padding: 16px 20px; border-radius: 8px;"><strong style="color: #047857;">Salida del programa</strong>
+<pre style="margin: 8px 0 0; color: #1f2937; font-family: Consolas, Monaco, monospace;">Padre: 30</pre>
+</div>
+<h4 style="color: #1f2937; margin-top: 24px;">Importancia de las relaciones jerárquicas</h4>
+<div style="overflow-x: auto;">
+<table style="width: 100%; border-collapse: collapse; min-width: 520px;">
+<thead>
+<tr style="background: #3B82F6; color: white;">
+<th style="padding: 13px; border: 1px solid #2563EB; text-align: left;">Relación</th>
+<th style="padding: 13px; border: 1px solid #2563EB; text-align: left;">Utilidad</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background: white;">
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Raíz</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Permite iniciar las operaciones del árbol.</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Padre</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Facilita modificar conexiones entre nodos.</td>
+</tr>
+<tr style="background: white;">
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Hijo</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Permite desplazarse por las ramas.</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Hoja</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Identifica el final de una rama.</td>
+</tr>
+<tr style="background: white;">
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Subárbol</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Permite trabajar con una sección de la estructura.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- 3.6 PROPIEDADES -->
+<section style="margin-bottom: 34px;">
+<h3 style="color: #1f2937; font-size: 24px; border-bottom: 3px solid #3B82F6; padding-bottom: 9px; margin-bottom: 20px;">3.6 Importancia de mantener la estructura y sus propiedades</h3>
+<p>Las operaciones sobre árboles deben preservar las características que permiten su correcto funcionamiento.</p>
+<p>Por ejemplo, un árbol binario debe conservar un máximo de dos hijos por nodo. Un BST, además, debe mantener sus reglas de ordenamiento.</p>
+<h4 style="color: #1f2937;">Comparación de estructuras</h4>
+<div style="display: flex; flex-wrap: wrap; gap: 16px; margin: 20px 0;">
+<div style="flex: 1 1 250px; background: #ECFDF5; border: 1px solid #A7F3D0; padding: 20px; border-radius: 9px;"><strong style="color: #047857;">BST válido</strong>
+<pre style="font-family: Consolas, Monaco, monospace; font-size: 14px; line-height: 1.7; overflow-x: auto; color: #1f2937;"><code>       50
+      /  \
+     30   70
+    / \   / \
+   20 40 60 80</code></pre>
+<p style="margin-bottom: 0;">Los valores respetan el ordenamiento de todos los subárboles.</p>
+</div>
+<div style="flex: 1 1 250px; background: #FFF1F2; border: 1px solid #FECDD3; padding: 20px; border-radius: 9px;"><strong style="color: #be123c;">BST inválido</strong>
+<pre style="font-family: Consolas, Monaco, monospace; font-size: 14px; line-height: 1.7; overflow-x: auto; color: #1f2937;"><code>       50
+      /  \
+     30   70
+         /
+        40</code></pre>
+<p style="margin-bottom: 0;">El valor 40 es menor que 50, pero se encuentra dentro de su subárbol derecho.</p>
+</div>
+</div>
+<h4 style="color: #1d4ed8;">Propiedades que deben conservarse</h4>
+<div style="display: flex; flex-wrap: wrap; gap: 14px; margin: 20px 0;">
+<div style="flex: 1 1 230px; background: #EFF6FF; border: 1px solid #BFDBFE; padding: 18px; border-radius: 8px;"><strong style="color: #1d4ed8;">Organización</strong>
+<p style="margin: 8px 0 0;">Las conexiones respetan el tipo de árbol utilizado.</p>
+</div>
+<div style="flex: 1 1 230px; background: #ECFDF5; border: 1px solid #A7F3D0; padding: 18px; border-radius: 8px;"><strong style="color: #047857;">Ordenamiento</strong>
+<p style="margin: 8px 0 0;">Los valores de un BST conservan las reglas de comparación.</p>
+</div>
+<div style="flex: 1 1 230px; background: #FFFBEB; border: 1px solid #FDE68A; padding: 18px; border-radius: 8px;"><strong style="color: #92400e;">Integridad</strong>
+<p style="margin: 8px 0 0;">Las modificaciones no deben provocar pérdida accidental de subárboles.</p>
+</div>
+<div style="flex: 1 1 230px; background: #F9F9FB; border: 1px solid #E5E7EB; padding: 18px; border-radius: 8px;"><strong>Conectividad</strong>
+<p style="margin: 8px 0 0;">Los nodos mantienen sus conexiones dentro de una estructura válida.</p>
+</div>
+<div style="flex: 1 1 230px; background: #EFF6FF; border: 1px solid #BFDBFE; padding: 18px; border-radius: 8px;"><strong style="color: #1d4ed8;">Ausencia de ciclos</strong>
+<p style="margin: 8px 0 0;">Las referencias no generan recorridos circulares.</p>
+</div>
+<div style="flex: 1 1 230px; background: #ECFDF5; border: 1px solid #A7F3D0; padding: 18px; border-radius: 8px;"><strong style="color: #047857;">Balanceo</strong>
+<p style="margin: 8px 0 0;">En estructuras AVL, las modificaciones deben preservar o recuperar el equilibrio.</p>
+</div>
+</div>
+<h4 style="color: #1f2937; margin-top: 24px;">Ejemplo práctico: registro de identificadores</h4>
+<div style="background: #F9F9FB; border: 1px solid #E5E7EB; padding: 22px; border-radius: 9px;">
+<p>Supongamos que una aplicación administra identificadores numéricos organizados mediante un BST.</p>
+<ol style="padding-left: 24px; margin-bottom: 0;">
+<li style="margin-bottom: 8px;"><strong>Registrar:</strong> el nuevo identificador se inserta respetando el ordenamiento.</li>
+<li style="margin-bottom: 8px;"><strong>Consultar:</strong> se realizan comparaciones para localizar el identificador.</li>
+<li><strong>Eliminar:</strong> se retira el identificador y se reorganizan las conexiones necesarias.</li>
+</ol>
+</div>
+</section>
+<!-- EJEMPLO INTEGRADOR -->
+<section style="margin-bottom: 34px;">
+<h3 style="color: #1f2937; font-size: 24px; border-bottom: 3px solid #3B82F6; padding-bottom: 9px; margin-bottom: 20px;">Ejemplo integrador en Python</h3>
+<p>El siguiente programa reúne las operaciones fundamentales de inserción, búsqueda y eliminación en un árbol binario de búsqueda. Puede ejecutarse de manera independiente.</p>
+<pre style="background: #1F2937; color: #f9fafb; font-family: Consolas, Monaco, monospace; font-size: 14px; line-height: 1.7; border-radius: 9px; padding: 22px; overflow-x: auto;"><code>class Nodo:
+    def __init__(self, valor):
+        self.valor = valor
+        self.izquierdo = None
+        self.derecho = None
+
+
+def insertar(raiz, valor):
+    if raiz is None:
+        return Nodo(valor)
+
+    if valor &lt; raiz.valor:
+        raiz.izquierdo = insertar(raiz.izquierdo, valor)
+
+    elif valor &gt; raiz.valor:
+        raiz.derecho = insertar(raiz.derecho, valor)
+
+    return raiz
+
+
+def buscar(raiz, valor):
+    while raiz is not None:
+        if valor == raiz.valor:
+            return True
+
+        if valor &lt; raiz.valor:
+            raiz = raiz.izquierdo
+        else:
+            raiz = raiz.derecho
+
+    return False
+
+
+def eliminar(raiz, valor):
+    if raiz is None:
+        return None
+
+    if valor &lt; raiz.valor:
+        raiz.izquierdo = eliminar(raiz.izquierdo, valor)
+
+    elif valor &gt; raiz.valor:
+        raiz.derecho = eliminar(raiz.derecho, valor)
+
+    else:
+        if raiz.izquierdo is None:
+            return raiz.derecho
+
+        if raiz.derecho is None:
+            return raiz.izquierdo
+
+        sucesor = raiz.derecho
+
+        while sucesor.izquierdo is not None:
+            sucesor = sucesor.izquierdo
+
+        raiz.valor = sucesor.valor
+
+        raiz.derecho = eliminar(
+            raiz.derecho,
+            sucesor.valor
+        )
+
+    return raiz
+
+
+# Crear el árbol
+raiz = None
+
+valores = [50, 30, 70, 20, 40, 60, 80]
+
+for valor in valores:
+    raiz = insertar(raiz, valor)
+
+
+# Buscar elementos
+print(&quot;Buscar 40:&quot;, buscar(raiz, 40))
+print(&quot;Buscar 90:&quot;, buscar(raiz, 90))
+
+
+# Eliminar un elemento
+raiz = eliminar(raiz, 50)
+
+print(&quot;Nueva raíz:&quot;, raiz.valor)
+print(&quot;Buscar 50:&quot;, buscar(raiz, 50))</code></pre>
+<h4 style="color: #10b981;">Resultado de la ejecución</h4>
+<pre style="background: #1F2937; color: #a7f3d0; font-family: Consolas, Monaco, monospace; font-size: 15px; line-height: 1.7; padding: 20px; border-radius: 9px; overflow-x: auto;"><code>Buscar 40: True
+Buscar 90: False
+Nueva raíz: 60
+Buscar 50: False</code></pre>
+<h4 style="color: #1f2937;">Análisis del resultado</h4>
+<div style="background: #FFFBEB; border: 1px solid #FDE68A; padding: 20px 24px; border-radius: 9px;">
+<ul style="margin: 0; padding-left: 22px;">
+<li style="margin-bottom: 8px;">El programa crea un BST a partir de siete valores.</li>
+<li style="margin-bottom: 8px;">La búsqueda del valor 40 devuelve <code>True</code> porque existe en el árbol.</li>
+<li style="margin-bottom: 8px;">La búsqueda del valor 90 devuelve <code>False</code> porque no está registrado.</li>
+<li style="margin-bottom: 8px;">Al eliminar 50, el sucesor inorden 60 ocupa su posición como nueva raíz.</li>
+<li>La última consulta confirma que el valor 50 ya no pertenece a la estructura.</li>
+</ul>
+</div>
+</section>
+<!-- SÍNTESIS -->
+<div style="background: #1F2937; color: #ffffff; padding: 26px 30px; border-radius: 10px; margin-top: 30px;">
+<h3 style="margin: 0 0 12px; color: #fbbf24; font-size: 22px;">Síntesis</h3>
+<p>Las operaciones fundamentales permiten crear, modificar y consultar árboles durante la ejecución de un programa.</p>
+<p>La inserción incorpora nuevos nodos, la búsqueda permite localizar valores y la eliminación retira elementos sin perder las propiedades estructurales. La identificación de raíces, padres, hijos y hojas facilita comprender las relaciones jerárquicas.</p>
+<p style="margin-bottom: 0;">En los árboles binarios de búsqueda, mantener el ordenamiento es indispensable. La eficiencia de las operaciones depende de la altura y organización del árbol. Estos conocimientos constituyen la base para estudiar los recorridos de árboles.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+</div></main><div class="nav-buttons">
+<a href="../html/2-tipos-y-clasificacion-de-arboles.html" title="Anterior" class="nav-button nav-button-left"><span>Anterior</span></a>
+<a href="../html/4-recorridos-de-arboles.html" title="Siguiente" class="nav-button nav-button-right"><span>Siguiente</span></a>
+</div>
+<footer id="siteFooter"><div id="siteFooterContent"> <div id="packageLicense" class="cc cc-by-sa"> <p> <span class="license-label">Licencia: </span><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="license">Creative Commons: Reconocimiento - compartir igual 4.0</a></p>
+</div>
+</div></footer>
+</div>
+<p id="made-with-eXe"> <a href="https://exelearning.net/" target="_blank" rel="noopener"> <span>Creado con eXeLearning <span>(Ventana nueva)</span></span></a></p>
+</body>
+</html>
